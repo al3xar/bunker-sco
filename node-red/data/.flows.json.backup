@@ -1,0 +1,3711 @@
+[
+    {
+        "id": "9965ab12e1e116d3",
+        "type": "tab",
+        "label": "Hive MQ",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6ac59e3e9207d276",
+        "type": "tab",
+        "label": "Hive MQ (Usuario y Contraseña)",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e9891387af72915b",
+        "type": "tab",
+        "label": "Hive MQ (SSL/TLS)",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f817f6a7671b1a08",
+        "type": "tab",
+        "label": "Keyrock",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7054fec8bee5107d",
+        "type": "tab",
+        "label": "Orion",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "92d8fd98132b13ea",
+        "type": "tab",
+        "label": "IoT Agent",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a802ef2933ec375e",
+        "type": "mqtt-broker",
+        "name": "Hive MQ",
+        "broker": "10.0.2.15",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "80e9a69f51797b3e",
+        "type": "mqtt-broker",
+        "name": "Hive MQ (Usuario y Contraseña)",
+        "broker": "10.0.2.15",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a5e11d29c103c79c",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "10.0.2.15.crt",
+        "keyname": "10.0.2.15.key",
+        "caname": "rootCA.crt",
+        "servername": "",
+        "verifyservercert": false,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "405695e50f5ae861",
+        "type": "mqtt-broker",
+        "name": "Hive MQ (SSL/TLS)",
+        "broker": "10.0.2.15",
+        "port": "8883",
+        "tls": "a5e11d29c103c79c",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c2103225e04894af",
+        "type": "inject",
+        "z": "9965ab12e1e116d3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sco",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "9d4327cd95ed1dce"
+            ]
+        ]
+    },
+    {
+        "id": "9d4327cd95ed1dce",
+        "type": "mqtt out",
+        "z": "9965ab12e1e116d3",
+        "name": "Hive MQ",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a802ef2933ec375e",
+        "x": 380,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "abe03d8902866fcc",
+        "type": "mqtt in",
+        "z": "9965ab12e1e116d3",
+        "name": "Hive MQ",
+        "topic": "sco",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a802ef2933ec375e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 380,
+        "y": 120,
+        "wires": [
+            [
+                "56743755545322fb"
+            ]
+        ]
+    },
+    {
+        "id": "56743755545322fb",
+        "type": "debug",
+        "z": "9965ab12e1e116d3",
+        "name": "recevied data from Hive MQ",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ad13e3219babab56",
+        "type": "inject",
+        "z": "6ac59e3e9207d276",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sco",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "866b278090c67bbe"
+            ]
+        ]
+    },
+    {
+        "id": "866b278090c67bbe",
+        "type": "mqtt out",
+        "z": "6ac59e3e9207d276",
+        "name": "Hive MQ (Usuario y Contraseña)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "80e9a69f51797b3e",
+        "x": 450,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "d3588fe87e28bf81",
+        "type": "mqtt in",
+        "z": "6ac59e3e9207d276",
+        "name": "Hive MQ (Usuario y Contraseña)",
+        "topic": "sco",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "80e9a69f51797b3e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "485310e29c46bccf"
+            ]
+        ]
+    },
+    {
+        "id": "485310e29c46bccf",
+        "type": "debug",
+        "z": "6ac59e3e9207d276",
+        "name": "recevied data from Hive MQ (Usuario y Contraseña)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9dbb33cab06f6fad",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            },
+            {
+                "p": "device_id",
+                "v": "lamp001",
+                "vt": "str"
+            },
+            {
+                "p": "api_key",
+                "v": "1234567890",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sco",
+        "payload": "{\"o\":0}",
+        "payloadType": "str",
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "f9c12d53aa58f654"
+            ]
+        ]
+    },
+    {
+        "id": "f9c12d53aa58f654",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 420,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "4f2e4c354c90d2b4",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "sco",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 410,
+        "y": 220,
+        "wires": [
+            [
+                "9cc4c2888ad282de",
+                "e4f189ea55d5bda9"
+            ]
+        ]
+    },
+    {
+        "id": "8733c8c2087cf1bd",
+        "type": "trigger",
+        "z": "e9891387af72915b",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "-1",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 140,
+        "y": 420,
+        "wires": [
+            [
+                "aec29c4ea58a4058"
+            ]
+        ]
+    },
+    {
+        "id": "54c59a41384deb2f",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 420,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "1f60a620a429d993",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sco",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "8733c8c2087cf1bd"
+            ]
+        ]
+    },
+    {
+        "id": "aec29c4ea58a4058",
+        "type": "function",
+        "z": "e9891387af72915b",
+        "name": "function 1",
+        "func": "let r = Math.random() * 10;\nif (r >=5 ) {\n    r = 1\n} else { r = 0}\nmsg.payload = {\"o\":r};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 420,
+        "wires": [
+            [
+                "54c59a41384deb2f"
+            ]
+        ]
+    },
+    {
+        "id": "42e11234649bc9a0",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "rejectUnauthorized",
+                "valueType": "other",
+                "valueValue": "false"
+            }
+        ],
+        "x": 650,
+        "y": 320,
+        "wires": [
+            [
+                "9378575280935250"
+            ]
+        ]
+    },
+    {
+        "id": "de3a9f18e4cb9a2a",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "flow variables",
+        "props": [
+            {
+                "p": "iota_puerto_gestion",
+                "v": "4061",
+                "vt": "str"
+            },
+            {
+                "p": "iota_ip",
+                "v": "10.0.2.15",
+                "vt": "str"
+            },
+            {
+                "p": "iota_puerto_datos",
+                "v": "7896",
+                "vt": "str"
+            },
+            {
+                "p": "fiware_service",
+                "v": "sco",
+                "vt": "str"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "/",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "c6ec2cdea656ea3b"
+            ]
+        ]
+    },
+    {
+        "id": "c6ec2cdea656ea3b",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "iota_ip",
+                "pt": "flow",
+                "to": "iota_ip",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "iota_puerto_gestion",
+                "pt": "flow",
+                "to": "iota_puerto_gestion",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "iota_puerto_datos",
+                "pt": "flow",
+                "to": "iota_puerto_datos",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "fiware_service",
+                "pt": "flow",
+                "to": "fiware_service",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "fiware_servicepath",
+                "pt": "flow",
+                "to": "fiware_servicepath",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26fb517d9345b960",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 950,
+        "y": 500,
+        "wires": [
+            [
+                "1157bde7942e743f"
+            ]
+        ]
+    },
+    {
+        "id": "9378575280935250",
+        "type": "switch",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 770,
+        "y": 460,
+        "wires": [
+            [
+                "1157bde7942e743f"
+            ],
+            [
+                "26fb517d9345b960"
+            ]
+        ]
+    },
+    {
+        "id": "ad3c3fb3c11a5c4a",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_datos",
+                "v": "iota_puerto_datos",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "api_key",
+                "v": "1234567890",
+                "vt": "str"
+            },
+            {
+                "p": "device_id",
+                "v": "lamp001",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sco",
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "f9c12d53aa58f654"
+            ]
+        ]
+    },
+    {
+        "id": "9cc4c2888ad282de",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "lamp001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "api_key",
+                "pt": "msg",
+                "to": "1234567890",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "fiware_service",
+                "pt": "msg",
+                "to": "fiware_service",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "fiware_servicepath",
+                "pt": "msg",
+                "to": "fiware_servicepath",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "iota_puerto_datos",
+                "pt": "msg",
+                "to": "iota_puerto_datos",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "iota_ip",
+                "pt": "msg",
+                "to": "iota_ip",
+                "tot": "flow",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 220,
+        "wires": [
+            [
+                "e61fa2f5825d83d2",
+                "42e11234649bc9a0"
+            ]
+        ]
+    },
+    {
+        "id": "1157bde7942e743f",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "update devices",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "e61fa2f5825d83d2",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "recevied data from Hive MQ (SSL/TLS)",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e4f189ea55d5bda9",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "99aebcd78c1fc320",
+        "type": "inject",
+        "z": "f817f6a7671b1a08",
+        "name": "flow variables",
+        "props": [
+            {
+                "p": "keyrock_ip",
+                "v": "10.0.2.15",
+                "vt": "str"
+            },
+            {
+                "p": "keyrock_puerto",
+                "v": "3443",
+                "vt": "str"
+            },
+            {
+                "p": "keyrock_oauth2_client_id",
+                "v": "d6ef7f8c-7c70-4b59-8e3d-121bcd316d47",
+                "vt": "str"
+            },
+            {
+                "p": "keyrock_oauth2_client_secret",
+                "v": "79f7a7b3-fe5c-47c5-a3e5-c69592e2a47a",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "8404c4b135ff9b53"
+            ]
+        ]
+    },
+    {
+        "id": "8404c4b135ff9b53",
+        "type": "change",
+        "z": "f817f6a7671b1a08",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "keyrock_ip",
+                "pt": "flow",
+                "to": "keyrock_ip",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "keyrock_puerto",
+                "pt": "flow",
+                "to": "keyrock_puerto",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "keyrock_oauth2_client_id",
+                "pt": "flow",
+                "to": "keyrock_oauth2_client_id",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "keyrock_oauth2_client_secret",
+                "pt": "flow",
+                "to": "keyrock_oauth2_client_secret",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fadcbbf828cf1cc6",
+        "type": "comment",
+        "z": "f817f6a7671b1a08",
+        "name": "OAuth2 Token",
+        "info": "",
+        "x": 130,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9fa076214d57930e",
+        "type": "comment",
+        "z": "f817f6a7671b1a08",
+        "name": "Get OAuth2 token",
+        "info": "",
+        "x": 190,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "659f04d50c1867aa",
+        "type": "comment",
+        "z": "f817f6a7671b1a08",
+        "name": "Get OAuth2 token: admin",
+        "info": "",
+        "x": 210,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ba12e026049f5d61",
+        "type": "comment",
+        "z": "f817f6a7671b1a08",
+        "name": "Get OAuth2 token: admin (permanent)",
+        "info": "",
+        "x": 250,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "3f2e59a1bcd6c4d1",
+        "type": "inject",
+        "z": "f817f6a7671b1a08",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "keyrock_ip",
+                "v": "keyrock_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "keyrock_puerto",
+                "v": "keyrock_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "keyrock_oauth2_client_id",
+                "v": "keyrock_oauth2_client_id",
+                "vt": "flow"
+            },
+            {
+                "p": "keyrock_oauth2_client_secret",
+                "v": "keyrock_oauth2_client_secret",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "username=admin@test.com&password=1234567890&grant_type=password",
+        "payloadType": "str",
+        "x": 200,
+        "y": 260,
+        "wires": [
+            [
+                "cf62b1799b4e981f"
+            ]
+        ]
+    },
+    {
+        "id": "aa5edb83c0162e6d",
+        "type": "inject",
+        "z": "f817f6a7671b1a08",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "keyrock_ip",
+                "v": "keyrock_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "keyrock_puerto",
+                "v": "keyrock_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "keyrock_oauth2_client_id",
+                "v": "keyrock_oauth2_client_id",
+                "vt": "flow"
+            },
+            {
+                "p": "keyrock_oauth2_client_secret",
+                "v": "keyrock_oauth2_client_secret",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "username=admin@test.com&password=1234567890&grant_type=password&scope=permanent",
+        "payloadType": "str",
+        "x": 200,
+        "y": 300,
+        "wires": [
+            [
+                "cf62b1799b4e981f"
+            ]
+        ]
+    },
+    {
+        "id": "cf62b1799b4e981f",
+        "type": "http request",
+        "z": "f817f6a7671b1a08",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{keyrock_oauth2_client_id}}}:{{{keyrock_oauth2_client_secret}}}@{{{keyrock_ip}}}:{{{keyrock_puerto}}}/oauth2/token",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/x-www-form-urlencoded"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "rejectUnauthorized",
+                "valueType": "other",
+                "valueValue": "false"
+            }
+        ],
+        "x": 510,
+        "y": 280,
+        "wires": [
+            [
+                "c24d14ef18de6f27",
+                "6076f249899ffa4b"
+            ]
+        ]
+    },
+    {
+        "id": "c24d14ef18de6f27",
+        "type": "json",
+        "z": "f817f6a7671b1a08",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 710,
+        "y": 400,
+        "wires": [
+            [
+                "cb3fcb269600653a"
+            ]
+        ]
+    },
+    {
+        "id": "6076f249899ffa4b",
+        "type": "debug",
+        "z": "f817f6a7671b1a08",
+        "name": "get oauth2 token",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "cb3fcb269600653a",
+        "type": "change",
+        "z": "f817f6a7671b1a08",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "oauth2-token",
+                "pt": "global",
+                "to": "payload.access_token",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8478081292e8f75a",
+        "type": "inject",
+        "z": "7054fec8bee5107d",
+        "name": "flow variables",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "10.0.2.15",
+                "vt": "str"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "1028",
+                "vt": "str"
+            },
+            {
+                "p": "fiware_service",
+                "v": "sco",
+                "vt": "str"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "/",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "c4ae7c4d8859dada"
+            ]
+        ]
+    },
+    {
+        "id": "c4ae7c4d8859dada",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orion_ip",
+                "pt": "flow",
+                "to": "orion_ip",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "orion_puerto",
+                "pt": "flow",
+                "to": "orion_puerto",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "fiware_service",
+                "pt": "flow",
+                "to": "fiware_service",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "fiware_servicepath",
+                "pt": "flow",
+                "to": "fiware_servicepath",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e5f87742103c22f6",
+        "type": "inject",
+        "z": "7054fec8bee5107d",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 180,
+        "wires": [
+            [
+                "e62757f60f8d3c2c"
+            ]
+        ]
+    },
+    {
+        "id": "2e4d60ebdee5e648",
+        "type": "json",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 180,
+        "wires": [
+            [
+                "32b4139a92f2c460"
+            ]
+        ]
+    },
+    {
+        "id": "32b4139a92f2c460",
+        "type": "debug",
+        "z": "7054fec8bee5107d",
+        "name": "orion version",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "682ca218903955cf",
+        "type": "comment",
+        "z": "7054fec8bee5107d",
+        "name": "Check orion version",
+        "info": "",
+        "x": 190,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e62757f60f8d3c2c",
+        "type": "http request",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/version",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "2e4d60ebdee5e648"
+            ]
+        ]
+    },
+    {
+        "id": "76dec3080a64dc12",
+        "type": "comment",
+        "z": "7054fec8bee5107d",
+        "name": "Entities",
+        "info": "",
+        "x": 110,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d21a6f6bcdf470ba",
+        "type": "comment",
+        "z": "7054fec8bee5107d",
+        "name": "Get entities",
+        "info": "",
+        "x": 170,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "30be064efcb14deb",
+        "type": "inject",
+        "z": "7054fec8bee5107d",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 340,
+        "wires": [
+            [
+                "1af99b4c98de8c0c"
+            ]
+        ]
+    },
+    {
+        "id": "1af99b4c98de8c0c",
+        "type": "http request",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 410,
+        "y": 340,
+        "wires": [
+            [
+                "dc85eb069a6a3d69"
+            ]
+        ]
+    },
+    {
+        "id": "dc85eb069a6a3d69",
+        "type": "json",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 340,
+        "wires": [
+            [
+                "e75be13027181133"
+            ]
+        ]
+    },
+    {
+        "id": "e75be13027181133",
+        "type": "debug",
+        "z": "7054fec8bee5107d",
+        "name": "get entities",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "b4a9d1c78508b72f",
+        "type": "comment",
+        "z": "7054fec8bee5107d",
+        "name": "Delete entity",
+        "info": "",
+        "x": 170,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "733b944ba9b0bc95",
+        "type": "inject",
+        "z": "7054fec8bee5107d",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:Lamp:001",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 460,
+        "wires": [
+            [
+                "9b18efd711f33d37"
+            ]
+        ]
+    },
+    {
+        "id": "9b18efd711f33d37",
+        "type": "http request",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 410,
+        "y": 460,
+        "wires": [
+            [
+                "8daaa12956f641b6"
+            ]
+        ]
+    },
+    {
+        "id": "6bdd20aaf07f69c1",
+        "type": "json",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 500,
+        "wires": [
+            [
+                "6f053ac64b5daac7"
+            ]
+        ]
+    },
+    {
+        "id": "6f053ac64b5daac7",
+        "type": "debug",
+        "z": "7054fec8bee5107d",
+        "name": "delete entity",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "8daaa12956f641b6",
+        "type": "switch",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 460,
+        "wires": [
+            [
+                "6f053ac64b5daac7"
+            ],
+            [
+                "6bdd20aaf07f69c1"
+            ]
+        ]
+    },
+    {
+        "id": "02ea57af251f1453",
+        "type": "comment",
+        "z": "7054fec8bee5107d",
+        "name": "Entity attributes",
+        "info": "",
+        "x": 140,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "1d9d726deb905f8d",
+        "type": "comment",
+        "z": "7054fec8bee5107d",
+        "name": "Get entity attribute: all",
+        "info": "",
+        "x": 200,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "f41f1ebdd8610bf4",
+        "type": "inject",
+        "z": "7054fec8bee5107d",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:Lamp:001",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 660,
+        "wires": [
+            [
+                "9de147ce6994653c"
+            ]
+        ]
+    },
+    {
+        "id": "9de147ce6994653c",
+        "type": "http request",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 410,
+        "y": 660,
+        "wires": [
+            [
+                "9b42f963c4d62f5d"
+            ]
+        ]
+    },
+    {
+        "id": "9b42f963c4d62f5d",
+        "type": "json",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 660,
+        "wires": [
+            [
+                "b597fe798f1f88dd"
+            ]
+        ]
+    },
+    {
+        "id": "b597fe798f1f88dd",
+        "type": "debug",
+        "z": "7054fec8bee5107d",
+        "name": "get entity attribute: all",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "4cdb27e29c6be2d8",
+        "type": "comment",
+        "z": "7054fec8bee5107d",
+        "name": "Get entity attribute: on",
+        "info": "",
+        "x": 200,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "b61e5a09fce7be13",
+        "type": "inject",
+        "z": "7054fec8bee5107d",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:Lamp:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 780,
+        "wires": [
+            [
+                "9305616e5599d68c"
+            ]
+        ]
+    },
+    {
+        "id": "287761bfbe953e9a",
+        "type": "http request",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 510,
+        "y": 780,
+        "wires": [
+            [
+                "de6f6f7b709321d4"
+            ]
+        ]
+    },
+    {
+        "id": "de6f6f7b709321d4",
+        "type": "json",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 780,
+        "wires": [
+            [
+                "0193fa992c255b5d"
+            ]
+        ]
+    },
+    {
+        "id": "0193fa992c255b5d",
+        "type": "debug",
+        "z": "7054fec8bee5107d",
+        "name": "get entity attribute: on",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "9305616e5599d68c",
+        "type": "trigger",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "-1",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 360,
+        "y": 840,
+        "wires": [
+            [
+                "287761bfbe953e9a"
+            ]
+        ]
+    },
+    {
+        "id": "afda95cebe7746db",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "flow variables",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "10.0.2.15",
+                "vt": "str"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "4061",
+                "vt": "str"
+            },
+            {
+                "p": "iota_puerto_datos",
+                "v": "7896",
+                "vt": "str"
+            },
+            {
+                "p": "fiware_service",
+                "v": "sco",
+                "vt": "str"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "/",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "7a94521ccf179fd6"
+            ]
+        ]
+    },
+    {
+        "id": "7a94521ccf179fd6",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "iota_ip",
+                "pt": "flow",
+                "to": "iota_ip",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "iota_puerto_gestion",
+                "pt": "flow",
+                "to": "iota_puerto_gestion",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "iota_puerto_datos",
+                "pt": "flow",
+                "to": "iota_puerto_datos",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "fiware_service",
+                "pt": "flow",
+                "to": "fiware_service",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "fiware_servicepath",
+                "pt": "flow",
+                "to": "fiware_servicepath",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c9f4c27a7741969a",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Services",
+        "info": "",
+        "x": 120,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "16c338400db86c19",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Get services",
+        "info": "",
+        "x": 170,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "a69434ddc5e040ea",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 220,
+        "wires": [
+            [
+                "10f08a66cf41e5b5"
+            ]
+        ]
+    },
+    {
+        "id": "10f08a66cf41e5b5",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/services",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            }
+        ],
+        "x": 410,
+        "y": 220,
+        "wires": [
+            [
+                "dfe50a4f024c0c11"
+            ]
+        ]
+    },
+    {
+        "id": "dfe50a4f024c0c11",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 220,
+        "wires": [
+            [
+                "6f7381788c9295a7"
+            ]
+        ]
+    },
+    {
+        "id": "6f7381788c9295a7",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "get services",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c157c73d38697fe2",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Create services",
+        "info": "",
+        "x": 180,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d98453ced16c3a00",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"services\":[{\"apikey\":\"1234567890\",\"cbroker\":\"http://10.0.2.15:1026\",\"entity_type\":\"Thing\",\"resource\":\"/iot/json\"}]}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 340,
+        "wires": [
+            [
+                "bcb967bbe5180d32"
+            ]
+        ]
+    },
+    {
+        "id": "bcb967bbe5180d32",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/services",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 410,
+        "y": 340,
+        "wires": [
+            [
+                "13e8d9d188e778ea"
+            ]
+        ]
+    },
+    {
+        "id": "8c99d36725dfef8e",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 380,
+        "wires": [
+            [
+                "61b84aa178332fca"
+            ]
+        ]
+    },
+    {
+        "id": "61b84aa178332fca",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "create services",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "13e8d9d188e778ea",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 340,
+        "wires": [
+            [
+                "61b84aa178332fca"
+            ],
+            [
+                "8c99d36725dfef8e"
+            ]
+        ]
+    },
+    {
+        "id": "1f6be9ff9e76f8ee",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Delete service",
+        "info": "",
+        "x": 170,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "8f8bd3fb4a121d10",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "resource",
+                "v": "/iot/json",
+                "vt": "str"
+            },
+            {
+                "p": "api_key",
+                "v": "1234567890",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 660,
+        "wires": [
+            [
+                "f5251f619e6f3e0d"
+            ]
+        ]
+    },
+    {
+        "id": "f5251f619e6f3e0d",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/services/?resource={{{resource}}}&apikey={{{api_key}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            }
+        ],
+        "x": 410,
+        "y": 660,
+        "wires": [
+            [
+                "2091039f17f2fcc4"
+            ]
+        ]
+    },
+    {
+        "id": "56381319bfcdbe75",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 700,
+        "wires": [
+            [
+                "b79f69b92cd07dcb"
+            ]
+        ]
+    },
+    {
+        "id": "b79f69b92cd07dcb",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "delete service",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "2091039f17f2fcc4",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 660,
+        "wires": [
+            [
+                "b79f69b92cd07dcb"
+            ],
+            [
+                "56381319bfcdbe75"
+            ]
+        ]
+    },
+    {
+        "id": "3ffc03a4698aa4bb",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Devices",
+        "info": "",
+        "x": 110,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "864320f45b85e04f",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Get devices",
+        "info": "",
+        "x": 170,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "92bdc6e458edf227",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 860,
+        "wires": [
+            [
+                "b8741209fb59e72f"
+            ]
+        ]
+    },
+    {
+        "id": "b8741209fb59e72f",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/devices",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            }
+        ],
+        "x": 410,
+        "y": 860,
+        "wires": [
+            [
+                "16f5721e7bbd7477"
+            ]
+        ]
+    },
+    {
+        "id": "16f5721e7bbd7477",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 860,
+        "wires": [
+            [
+                "b96cc9d6823ff655"
+            ]
+        ]
+    },
+    {
+        "id": "b96cc9d6823ff655",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "get devices",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "55e6da5ea007dff7",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Create devices",
+        "info": "",
+        "x": 180,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "b09fb42b25c80308",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"devices\":[{\"device_id\":\"lamp001\",\"entity_name\":\"urn:ngsi-ld:Lamp:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"object_id\":\"o\",\"name\":\"on\",\"type\":\"Number\"}]},{\"device_id\":\"lamp002\",\"entity_name\":\"urn:ngsi-ld:Lamp:002\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"temp\",\"type\":\"Number\"}]}]}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 980,
+        "wires": [
+            [
+                "910e41bf82b438a0"
+            ]
+        ]
+    },
+    {
+        "id": "910e41bf82b438a0",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/devices",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 410,
+        "y": 980,
+        "wires": [
+            [
+                "5a924d66d96828e6"
+            ]
+        ]
+    },
+    {
+        "id": "e7b76bb6f5b7392b",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 1020,
+        "wires": [
+            [
+                "57ca771fa2d33763"
+            ]
+        ]
+    },
+    {
+        "id": "57ca771fa2d33763",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "create devices",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "5a924d66d96828e6",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 980,
+        "wires": [
+            [
+                "57ca771fa2d33763"
+            ],
+            [
+                "e7b76bb6f5b7392b"
+            ]
+        ]
+    },
+    {
+        "id": "fe690796cfab3f25",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Delete devices",
+        "info": "",
+        "x": 180,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "02585d670356c2aa",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "device_id",
+                "v": "lamp001",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 1180,
+        "wires": [
+            [
+                "ae02c784ab5505f5"
+            ]
+        ]
+    },
+    {
+        "id": "ae02c784ab5505f5",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/devices/{{{device_id}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            }
+        ],
+        "x": 410,
+        "y": 1200,
+        "wires": [
+            [
+                "9fccb76d487e1355"
+            ]
+        ]
+    },
+    {
+        "id": "0fd8bff55fa49e4e",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 1240,
+        "wires": [
+            [
+                "307ab2c17874330c"
+            ]
+        ]
+    },
+    {
+        "id": "307ab2c17874330c",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "delete device",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "9fccb76d487e1355",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 1200,
+        "wires": [
+            [
+                "307ab2c17874330c"
+            ],
+            [
+                "0fd8bff55fa49e4e"
+            ]
+        ]
+    },
+    {
+        "id": "190fba59b83122fa",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Delete device: lamp001",
+        "info": "",
+        "x": 200,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "1d00429a9d2c90c5",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "device_id",
+                "v": "termo",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 200,
+        "y": 1220,
+        "wires": [
+            [
+                "ae02c784ab5505f5"
+            ]
+        ]
+    },
+    {
+        "id": "11a0fbe2030b62e6",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Delete device: lamp002",
+        "info": "",
+        "x": 200,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "469b25b5a007d452",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Update devices",
+        "info": "",
+        "x": 180,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "9447ebf1741a1cac",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_datos",
+                "v": "iota_puerto_datos",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "api_key",
+                "v": "1234567890",
+                "vt": "str"
+            },
+            {
+                "p": "device_id",
+                "v": "lamp001",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"o\":0}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 1420,
+        "wires": [
+            [
+                "a979b20a7b5672ec"
+            ]
+        ]
+    },
+    {
+        "id": "a979b20a7b5672ec",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 410,
+        "y": 1440,
+        "wires": [
+            [
+                "bcd885fa6993b402"
+            ]
+        ]
+    },
+    {
+        "id": "c01e70fc451af416",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 1480,
+        "wires": [
+            [
+                "20b49813fd8b3f91"
+            ]
+        ]
+    },
+    {
+        "id": "20b49813fd8b3f91",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "update devices",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "bcd885fa6993b402",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 1440,
+        "wires": [
+            [
+                "20b49813fd8b3f91"
+            ],
+            [
+                "c01e70fc451af416"
+            ]
+        ]
+    },
+    {
+        "id": "6e0fa1035c157295",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Update device lamp001: set on to 0",
+        "info": "",
+        "x": 240,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "0b0be8ae90f3ff06",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_datos",
+                "v": "iota_puerto_datos",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "api_key",
+                "v": "1234567890",
+                "vt": "str"
+            },
+            {
+                "p": "device_id",
+                "v": "lamp001",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"o\":1}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 1460,
+        "wires": [
+            [
+                "a979b20a7b5672ec"
+            ]
+        ]
+    },
+    {
+        "id": "5a116cb68991e0e7",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Update device lamp001: set on to 1",
+        "info": "",
+        "x": 240,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "0676e8974314834c",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_datos",
+                "v": "iota_puerto_datos",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "api_key",
+                "v": "1234567890",
+                "vt": "str"
+            },
+            {
+                "p": "device_id",
+                "v": "lamp002",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":0}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 1620,
+        "wires": [
+            [
+                "32dbbe4b64bcb3df"
+            ]
+        ]
+    },
+    {
+        "id": "32dbbe4b64bcb3df",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 410,
+        "y": 1640,
+        "wires": [
+            [
+                "a5967ce22ebdec24",
+                "4a3d12af37555b9b"
+            ]
+        ]
+    },
+    {
+        "id": "a09a2d87a00a243d",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 1680,
+        "wires": [
+            [
+                "165ee383cfc8dc52"
+            ]
+        ]
+    },
+    {
+        "id": "165ee383cfc8dc52",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "update devices",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "a5967ce22ebdec24",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 1640,
+        "wires": [
+            [
+                "165ee383cfc8dc52"
+            ],
+            [
+                "a09a2d87a00a243d"
+            ]
+        ]
+    },
+    {
+        "id": "f484a019722523a7",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Update device lamp002: set on to 0",
+        "info": "",
+        "x": 240,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "c8a67eb65b249f95",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_datos",
+                "v": "iota_puerto_datos",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "api_key",
+                "v": "1234567890",
+                "vt": "str"
+            },
+            {
+                "p": "device_id",
+                "v": "lamp002",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":1}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 1660,
+        "wires": [
+            [
+                "32dbbe4b64bcb3df"
+            ]
+        ]
+    },
+    {
+        "id": "f7c6aeeaa4101a3b",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Update device lamp002: set on to 1",
+        "info": "",
+        "x": 240,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "d1b393f505c05540",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Inject permanent key to service",
+        "info": "",
+        "x": 230,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "3396a78f4d1baf2f",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "resource",
+                "v": "/iot/json",
+                "vt": "str"
+            },
+            {
+                "p": "api_key",
+                "v": "1234567890",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\t    \"cbroker\": \"http://10.0.2.15:1026\",\t    \"trust\": $globalContext(\"oauth2-token\")\t}",
+        "payloadType": "jsonata",
+        "x": 200,
+        "y": 500,
+        "wires": [
+            [
+                "7fdc4439958bdb13"
+            ]
+        ]
+    },
+    {
+        "id": "7fdc4439958bdb13",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "PUT",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/services/?resource={{{resource}}}&apikey={{{api_key}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 410,
+        "y": 500,
+        "wires": [
+            [
+                "3af0ac09d8e2fc51"
+            ]
+        ]
+    },
+    {
+        "id": "184d09ddccd6a54f",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 540,
+        "wires": [
+            [
+                "1f0ea1c816ef4e66"
+            ]
+        ]
+    },
+    {
+        "id": "1f0ea1c816ef4e66",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "inject permanent key to service",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "3af0ac09d8e2fc51",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 500,
+        "wires": [
+            [
+                "1f0ea1c816ef4e66"
+            ],
+            [
+                "184d09ddccd6a54f"
+            ]
+        ]
+    },
+    {
+        "id": "4a3d12af37555b9b",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 1560,
+        "wires": []
+    }
+]
