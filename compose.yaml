@@ -1,0 +1,116 @@
+services:
+  keyrock-db:
+    image: mysql:5.7
+    restart: always
+    expose:
+      - "3306"
+    volumes:
+      - ./keyrock-db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+  keyrock:
+    depends_on:
+      - keyrock-db
+    image: fiware/idm:8.4.0
+    ports:
+      - 3005:3005
+      - 3443:3443
+    volumes:
+      - ./certs:/opt/fiware-idm/certs
+    environment:
+      - DEBUG=idm:*
+      - IDM_HOST=http://0.0.0.0:3005
+      - IDM_PORT=3005
+      - IDM_HTTPS_PORT=3443
+      - IDM_HTTPS_ENABLED=true
+      - IDM_DB_HOST=keyrock-db
+      - IDM_DB_USER=root
+      - IDM_DB_PASS=secret
+      - IDM_ADMIN_USER=admin
+      - IDM_ADMIN_EMAIL=admin@test.com
+      - IDM_ADMIN_PASS=1234567890
+  orion-db:
+    image: mongo:4.4
+    restart: unless-stopped
+    expose:
+      - "27017"
+    volumes:
+      - ./orion-db/data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+  hivemq:
+    image: hivemq/hivemq-ce:2024.7
+    ports:
+      - 8883:8883
+    volumes:
+      - ./hivemq/conf:/opt/hivemq/conf
+      - ./certs:/certs
+  orion:
+    image: fiware/orion:latest
+    restart: unless-stopped
+    ports:
+      - 1028:1028
+    environment:
+      - ORION_MONGO_URI=mongodb://root:root@orion-db:27017
+      - ORION_INSECURE_NOTIF=true
+      - ORION_PORT=1028
+  wilma:
+    depends_on:
+      - keyrock
+    image: fiware/pep-proxy
+    ports:
+      - 1026:1026
+    environment:
+      - PEP_PROXY_PDP=idm
+      - PEP_PROXY_PORT=1026
+      - PEP_PROXY_HTTPS_ENABLED=true
+      - PEP_PROXY_AUTH_ENABLED=true
+      - PEP_PROXY_APP_ID=d6ef7f8c-7c70-4b59-8e3d-121bcd316d47
+      - PEP_PROXY_USERNAME=pep_proxy_f196e6c7-4584-4918-88d3-d5ea0aeac36c
+      - PEP_PASSWORD=pep_proxy_f9dbf355-d4f6-480a-8440-b11276510cfc
+      - PEP_PROXY_IDM_HOST=10.0.2.15
+      - PEP_PROXY_IDM_PORT=3005
+      - PEP_PROXY_IDM_SSL_ENABLED=true
+      - PEP_PROXY_APP_HOST=10.0.2.15
+      - PEP_PROXY_APP_PORT=1028
+  iot-agent-json-db:
+    image: mongo:4.4
+    restart: unless-stopped
+    expose:
+      - "27017"
+    volumes:
+      - ./iot-agent-json-db/data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+  iot-agent-json:
+    image: fiware/iotagent-json:3.3.0
+    restart: unless-stopped
+    ports:
+      - 4061:4061 # North port: Management
+      - 7896:7896 # South port: Data
+    environment:
+      # IoT Agent Node Lib variables
+      - IOTA_NORTH_PORT=4061
+      - IOTA_PROVIDER_URL=https://10.0.2.15:4061
+      - IOTA_REGISTRY_TYPE=mongodb
+      - IOTA_MONGO_HOST=iot-agent-json-db
+      - IOTA_MONGO_PORT=27017
+      - IOTA_MONGO_USER=root
+      - IOTA_MONGO_PASSWORD=root
+      - IOTA_MONGO_AUTH_SOURCE=admin
+      - IOTA_CB_HOST=10.0.2.15
+      - IOTA_CB_PORT=1026
+      - IOTA_HTTP_PORT=7896
+      - IOTA_AUTH_ENABLED=true
+      - IOTA_AUTH_PERMANENT_TOKEN=true
+      - IOTA_AUTH_TYPE=oauth2
+      - IOTA_AUTH_HOST=10.0.2.15
+      - IOTA_AUTH_PORT=3005
+      - IOTA_AUTH_URL=http//10.0.2.15:3005
+      - IOTA_AUTH_TOKEN_PATH=/oauth2/token
+      - IOTA_AUTH_HEADER=Authorization
+      - IOTA_AUTH_CLIENT_ID=d6ef7f8c-7c70-4b59-8e3d-121bcd316d47
+      - IOTA_AUTH_CLIENT_SECRET=79f7a7b3-fe5c-47c5-a3e5-c69592e2a47a
+networks: {}
