@@ -1,4 +1,33 @@
 services:
+  node-red:
+    image: nodered/node-red:latest
+    ports:
+      - 1880:1880
+    volumes:
+      - ./node-red/data:/data
+      - ./certs:/certs
+    environment:
+      - TZ=Europe/Madrid
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    networks:
+      # - bunker_iot_agent_net
+      # - bunker_keyrock_net
+      # - bunker_orion_net
+      # - bunker_wilma_net
+      - mucc-sco-p1-net
+  certificate:
+    image: cert-gen
+    volumes:
+      - ./certs:/certs
+    environment:
+      - DOMAIN=10.0.2.15
+      - SUBJ_C=ES
+      - SUBJ_ST=Valencia
+      - SUBJ_L=Valencia
+      - SUBJ_O="Seguridad de las Cosas"
+      - SUBJ_OU=SCO
+    networks:
+      - mucc-sco-p1-net
   keyrock-db:
     image: mysql:5.7
     restart: always
@@ -113,4 +142,5 @@ services:
       - IOTA_AUTH_HEADER=Authorization
       - IOTA_AUTH_CLIENT_ID=d6ef7f8c-7c70-4b59-8e3d-121bcd316d47
       - IOTA_AUTH_CLIENT_SECRET=79f7a7b3-fe5c-47c5-a3e5-c69592e2a47a
-networks: {}
+networks: 
+  mucc-sco-p1-net: null
