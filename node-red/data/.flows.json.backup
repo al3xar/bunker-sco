@@ -1,21 +1,5 @@
 [
     {
-        "id": "9965ab12e1e116d3",
-        "type": "tab",
-        "label": "Hive MQ",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "6ac59e3e9207d276",
-        "type": "tab",
-        "label": "Hive MQ (Usuario y Contraseña)",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "e9891387af72915b",
         "type": "tab",
         "label": "Hive MQ (SSL/TLS)",
@@ -118,7 +102,7 @@
         "ca": "",
         "certname": "10.0.2.15.crt",
         "keyname": "10.0.2.15.key",
-        "caname": "rootCA.crt",
+        "caname": "rootCA.key",
         "servername": "",
         "verifyservercert": false,
         "alpnprotocol": ""
@@ -156,176 +140,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "c2103225e04894af",
-        "type": "inject",
-        "z": "9965ab12e1e116d3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "sco",
-        "payload": "",
-        "payloadType": "date",
-        "x": 190,
-        "y": 60,
-        "wires": [
-            [
-                "9d4327cd95ed1dce"
-            ]
-        ]
-    },
-    {
-        "id": "9d4327cd95ed1dce",
-        "type": "mqtt out",
-        "z": "9965ab12e1e116d3",
-        "name": "Hive MQ",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "a802ef2933ec375e",
-        "x": 380,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "abe03d8902866fcc",
-        "type": "mqtt in",
-        "z": "9965ab12e1e116d3",
-        "name": "Hive MQ",
-        "topic": "sco",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "a802ef2933ec375e",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 380,
-        "y": 120,
-        "wires": [
-            [
-                "56743755545322fb"
-            ]
-        ]
-    },
-    {
-        "id": "56743755545322fb",
-        "type": "debug",
-        "z": "9965ab12e1e116d3",
-        "name": "recevied data from Hive MQ",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "ad13e3219babab56",
-        "type": "inject",
-        "z": "6ac59e3e9207d276",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "sco",
-        "payload": "",
-        "payloadType": "date",
-        "x": 190,
-        "y": 60,
-        "wires": [
-            [
-                "866b278090c67bbe"
-            ]
-        ]
-    },
-    {
-        "id": "866b278090c67bbe",
-        "type": "mqtt out",
-        "z": "6ac59e3e9207d276",
-        "name": "Hive MQ (Usuario y Contraseña)",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "80e9a69f51797b3e",
-        "x": 450,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "d3588fe87e28bf81",
-        "type": "mqtt in",
-        "z": "6ac59e3e9207d276",
-        "name": "Hive MQ (Usuario y Contraseña)",
-        "topic": "sco",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "80e9a69f51797b3e",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 450,
-        "y": 120,
-        "wires": [
-            [
-                "485310e29c46bccf"
-            ]
-        ]
-    },
-    {
-        "id": "485310e29c46bccf",
-        "type": "debug",
-        "z": "6ac59e3e9207d276",
-        "name": "recevied data from Hive MQ (Usuario y Contraseña)",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 830,
-        "y": 120,
-        "wires": []
-    },
-    {
         "id": "9dbb33cab06f6fad",
         "type": "inject",
         "z": "e9891387af72915b",
@@ -354,9 +168,9 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "sco",
-        "payload": "{\"o\":0}",
+        "payload": "{\"o\":1}",
         "payloadType": "str",
-        "x": 120,
+        "x": 140,
         "y": 120,
         "wires": [
             [
@@ -378,7 +192,7 @@
         "correl": "",
         "expiry": "",
         "broker": "405695e50f5ae861",
-        "x": 420,
+        "x": 380,
         "y": 120,
         "wires": []
     },
@@ -395,14 +209,31 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 410,
-        "y": 220,
+        "x": 350,
+        "y": 200,
         "wires": [
             [
-                "9cc4c2888ad282de",
-                "e4f189ea55d5bda9"
+                "e61fa2f5825d83d2",
+                "ed3de45ee09cbe4e"
             ]
         ]
+    },
+    {
+        "id": "e61fa2f5825d83d2",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "recevied data from Hive MQ (SSL/TLS)",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 120,
+        "wires": []
     },
     {
         "id": "8733c8c2087cf1bd",
@@ -421,8 +252,8 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 140,
-        "y": 420,
+        "x": 360,
+        "y": 560,
         "wires": [
             [
                 "aec29c4ea58a4058"
@@ -443,8 +274,8 @@
         "correl": "",
         "expiry": "",
         "broker": "405695e50f5ae861",
-        "x": 420,
-        "y": 300,
+        "x": 780,
+        "y": 420,
         "wires": []
     },
     {
@@ -469,7 +300,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 280,
+        "y": 420,
         "wires": [
             [
                 "8733c8c2087cf1bd"
@@ -481,67 +312,18 @@
         "type": "function",
         "z": "e9891387af72915b",
         "name": "function 1",
-        "func": "let r = Math.random() * 10;\nif (r >=5 ) {\n    r = 1\n} else { r = 0}\nmsg.payload = {\"o\":r};\nreturn msg;",
+        "func": "\nconst r = Math.random() * 10;\nif(r >= 5) {\n    msg.payload = {\"o\":0}\n} else {\n    msg.payload = {\"o\":1}\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
+        "x": 540,
         "y": 420,
         "wires": [
             [
                 "54c59a41384deb2f"
-            ]
-        ]
-    },
-    {
-        "id": "42e11234649bc9a0",
-        "type": "http request",
-        "z": "e9891387af72915b",
-        "name": "",
-        "method": "POST",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "https://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
-        "tls": "a5e11d29c103c79c",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "other",
-                "keyValue": "Fiware-Service",
-                "valueType": "msg",
-                "valueValue": "fiware_service"
-            },
-            {
-                "keyType": "other",
-                "keyValue": "Fiware-ServicePath",
-                "valueType": "msg",
-                "valueValue": "fiware_servicepath"
-            },
-            {
-                "keyType": "other",
-                "keyValue": "Content-Type",
-                "valueType": "other",
-                "valueValue": "application/json"
-            },
-            {
-                "keyType": "other",
-                "keyValue": "rejectUnauthorized",
-                "valueType": "other",
-                "valueValue": "false"
-            }
-        ],
-        "x": 650,
-        "y": 320,
-        "wires": [
-            [
-                "9378575280935250"
             ]
         ]
     },
@@ -552,13 +334,13 @@
         "name": "flow variables",
         "props": [
             {
-                "p": "iota_puerto_gestion",
-                "v": "4061",
+                "p": "iota_ip",
+                "v": "10.0.2.15",
                 "vt": "str"
             },
             {
-                "p": "iota_ip",
-                "v": "10.0.2.15",
+                "p": "iota_puerto_gestion",
+                "v": "4061",
                 "vt": "str"
             },
             {
@@ -644,124 +426,11 @@
         ]
     },
     {
-        "id": "26fb517d9345b960",
-        "type": "json",
-        "z": "e9891387af72915b",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 950,
-        "y": 500,
-        "wires": [
-            [
-                "1157bde7942e743f"
-            ]
-        ]
-    },
-    {
-        "id": "9378575280935250",
-        "type": "switch",
-        "z": "e9891387af72915b",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "empty"
-            },
-            {
-                "t": "nempty"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 770,
-        "y": 460,
-        "wires": [
-            [
-                "1157bde7942e743f"
-            ],
-            [
-                "26fb517d9345b960"
-            ]
-        ]
-    },
-    {
-        "id": "ad3c3fb3c11a5c4a",
-        "type": "inject",
-        "z": "e9891387af72915b",
-        "name": "execute request",
-        "props": [
-            {
-                "p": "iota_ip",
-                "v": "iota_ip",
-                "vt": "flow"
-            },
-            {
-                "p": "iota_puerto_datos",
-                "v": "iota_puerto_datos",
-                "vt": "flow"
-            },
-            {
-                "p": "fiware_service",
-                "v": "fiware_service",
-                "vt": "flow"
-            },
-            {
-                "p": "fiware_servicepath",
-                "v": "fiware_servicepath",
-                "vt": "flow"
-            },
-            {
-                "p": "api_key",
-                "v": "1234567890",
-                "vt": "str"
-            },
-            {
-                "p": "device_id",
-                "v": "lamp001",
-                "vt": "str"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "sco",
-        "x": 140,
-        "y": 180,
-        "wires": [
-            [
-                "f9c12d53aa58f654"
-            ]
-        ]
-    },
-    {
-        "id": "9cc4c2888ad282de",
+        "id": "ed3de45ee09cbe4e",
         "type": "change",
         "z": "e9891387af72915b",
         "name": "",
         "rules": [
-            {
-                "t": "set",
-                "p": "device_id",
-                "pt": "msg",
-                "to": "lamp001",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "api_key",
-                "pt": "msg",
-                "to": "1234567890",
-                "tot": "str"
-            },
             {
                 "t": "set",
                 "p": "fiware_service",
@@ -780,6 +449,14 @@
             },
             {
                 "t": "set",
+                "p": "iota_ip",
+                "pt": "msg",
+                "to": "iota_ip",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
                 "p": "iota_puerto_datos",
                 "pt": "msg",
                 "to": "iota_puerto_datos",
@@ -788,11 +465,17 @@
             },
             {
                 "t": "set",
-                "p": "iota_ip",
+                "p": "api_key",
                 "pt": "msg",
-                "to": "iota_ip",
-                "tot": "flow",
-                "dc": true
+                "to": "1234567890",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "lamp001",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -800,21 +483,80 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 660,
+        "x": 640,
         "y": 220,
         "wires": [
             [
-                "e61fa2f5825d83d2",
-                "42e11234649bc9a0"
+                "f0e28fd75a7219c8",
+                "eb66f4247665c72b"
             ]
         ]
     },
     {
-        "id": "1157bde7942e743f",
+        "id": "eb66f4247665c72b",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 1050,
+        "y": 220,
+        "wires": [
+            [
+                "003dec97bb626d6e"
+            ]
+        ]
+    },
+    {
+        "id": "7cb1f0e17ed702a4",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1410,
+        "y": 260,
+        "wires": [
+            [
+                "67516e659d6af62f"
+            ]
+        ]
+    },
+    {
+        "id": "67516e659d6af62f",
         "type": "debug",
         "z": "e9891387af72915b",
         "name": "update devices",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -822,15 +564,44 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1140,
-        "y": 440,
+        "x": 1600,
+        "y": 220,
         "wires": []
     },
     {
-        "id": "e61fa2f5825d83d2",
+        "id": "003dec97bb626d6e",
+        "type": "switch",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1250,
+        "y": 220,
+        "wires": [
+            [
+                "67516e659d6af62f"
+            ],
+            [
+                "7cb1f0e17ed702a4"
+            ]
+        ]
+    },
+    {
+        "id": "f0e28fd75a7219c8",
         "type": "debug",
         "z": "e9891387af72915b",
-        "name": "recevied data from Hive MQ (SSL/TLS)",
+        "name": "debug 1",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -839,24 +610,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1030,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "e4f189ea55d5bda9",
-        "type": "debug",
-        "z": "e9891387af72915b",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 100,
+        "x": 970,
+        "y": 160,
         "wires": []
     },
     {
@@ -1096,20 +851,13 @@
                 "keyValue": "Content-Type",
                 "valueType": "other",
                 "valueValue": "application/x-www-form-urlencoded"
-            },
-            {
-                "keyType": "other",
-                "keyValue": "rejectUnauthorized",
-                "valueType": "other",
-                "valueValue": "false"
             }
         ],
-        "x": 510,
+        "x": 410,
         "y": 280,
         "wires": [
             [
-                "c24d14ef18de6f27",
-                "6076f249899ffa4b"
+                "c24d14ef18de6f27"
             ]
         ]
     },
@@ -1121,10 +869,11 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 710,
-        "y": 400,
+        "x": 750,
+        "y": 280,
         "wires": [
             [
+                "6076f249899ffa4b",
                 "cb3fcb269600653a"
             ]
         ]
@@ -1138,8 +887,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 950,
@@ -1165,8 +914,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 990,
-        "y": 400,
+        "x": 970,
+        "y": 320,
         "wires": [
             []
         ]
@@ -1343,8 +1092,8 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/version",
-        "tls": "",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/version",
+        "tls": "a5e11d29c103c79c",
         "persist": false,
         "proxy": "",
         "insecureHTTPParser": false,
@@ -1439,8 +1188,8 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities",
-        "tls": "",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities",
+        "tls": "a5e11d29c103c79c",
         "persist": false,
         "proxy": "",
         "insecureHTTPParser": false,
@@ -1575,8 +1324,8 @@
         "method": "DELETE",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}",
-        "tls": "",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}",
+        "tls": "a5e11d29c103c79c",
         "persist": false,
         "proxy": "",
         "insecureHTTPParser": false,
@@ -1720,7 +1469,7 @@
             },
             {
                 "p": "entity_id",
-                "v": "urn:ngsi-ld:Lamp:001",
+                "v": "urn:ngsi-ld:Lamp:002",
                 "vt": "str"
             },
             {
@@ -1750,8 +1499,8 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs",
-        "tls": "",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs",
+        "tls": "a5e11d29c103c79c",
         "persist": false,
         "proxy": "",
         "insecureHTTPParser": false,
@@ -1879,7 +1628,7 @@
         "y": 780,
         "wires": [
             [
-                "9305616e5599d68c"
+                "af20204629072774"
             ]
         ]
     },
@@ -1891,8 +1640,8 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "http://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
-        "tls": "",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
+        "tls": "a5e11d29c103c79c",
         "persist": false,
         "proxy": "",
         "insecureHTTPParser": false,
@@ -1918,7 +1667,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 510,
+        "x": 590,
         "y": 780,
         "wires": [
             [
@@ -1960,7 +1709,7 @@
         "wires": []
     },
     {
-        "id": "9305616e5599d68c",
+        "id": "af20204629072774",
         "type": "trigger",
         "z": "7054fec8bee5107d",
         "name": "",
@@ -1976,7 +1725,7 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 360,
+        "x": 380,
         "y": 840,
         "wires": [
             [
@@ -2257,7 +2006,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"services\":[{\"apikey\":\"1234567890\",\"cbroker\":\"http://10.0.2.15:1026\",\"entity_type\":\"Thing\",\"resource\":\"/iot/json\"}]}",
+        "payload": "{\"services\":[{\"apikey\":\"1234567890\",\"cbroker\":\"https://10.0.2.15:1028\",\"entity_type\":\"Thing\",\"resource\":\"/iot/json\"}]}",
         "payloadType": "json",
         "x": 200,
         "y": 340,
@@ -2275,8 +2024,8 @@
         "method": "POST",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/services",
-        "tls": "",
+        "url": "https://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/services",
+        "tls": "a5e11d29c103c79c",
         "persist": false,
         "proxy": "",
         "insecureHTTPParser": false,
@@ -2706,7 +2455,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"devices\":[{\"device_id\":\"lamp001\",\"entity_name\":\"urn:ngsi-ld:Lamp:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"object_id\":\"o\",\"name\":\"on\",\"type\":\"Number\"}]},{\"device_id\":\"lamp002\",\"entity_name\":\"urn:ngsi-ld:Lamp:002\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"temp\",\"type\":\"Number\"}]}]}",
+        "payload": "{\"devices\":[{\"device_id\":\"lamp001\",\"entity_name\":\"urn:ngsi-ld:Lamp:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"object_id\":\"o\",\"name\":\"on\",\"type\":\"Number\"}]},{\"device_id\":\"lamp002\",\"entity_name\":\"urn:ngsi-ld:Lamp:002\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"on\",\"type\":\"Number\"}]}]}",
         "payloadType": "json",
         "x": 200,
         "y": 980,
@@ -3013,7 +2762,7 @@
             },
             {
                 "p": "device_id",
-                "v": "termo",
+                "v": "lamp002",
                 "vt": "str"
             }
         ],
@@ -3113,8 +2862,8 @@
         "method": "POST",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "http://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
-        "tls": "",
+        "url": "https://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
+        "tls": "a5e11d29c103c79c",
         "persist": false,
         "proxy": "",
         "insecureHTTPParser": false,
@@ -3138,6 +2887,12 @@
                 "keyValue": "Content-Type",
                 "valueType": "other",
                 "valueValue": "application/json"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "rejectUnauthorized",
+                "valueType": "other",
+                "valueValue": "false"
             }
         ],
         "x": 410,
@@ -3258,6 +3013,11 @@
             },
             {
                 "p": "payload"
+            },
+            {
+                "p": "rejectUnauthorized",
+                "v": "false",
+                "vt": "str"
             }
         ],
         "repeat": "",
@@ -3379,8 +3139,7 @@
         "y": 1640,
         "wires": [
             [
-                "a5967ce22ebdec24",
-                "4a3d12af37555b9b"
+                "a5967ce22ebdec24"
             ]
         ]
     },
@@ -3576,7 +3335,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\t    \"cbroker\": \"http://10.0.2.15:1026\",\t    \"trust\": $globalContext(\"oauth2-token\")\t}",
+        "payload": "{\t    \"cbroker\": \"https://10.0.2.15:1028\",\t    \"trust\": $globalContext(\"oauth2-token\")\t}",
         "payloadType": "jsonata",
         "x": 200,
         "y": 500,
@@ -3690,22 +3449,5 @@
                 "184d09ddccd6a54f"
             ]
         ]
-    },
-    {
-        "id": "4a3d12af37555b9b",
-        "type": "debug",
-        "z": "92d8fd98132b13ea",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 580,
-        "y": 1560,
-        "wires": []
     }
 ]
