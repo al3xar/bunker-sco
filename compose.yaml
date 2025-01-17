@@ -10,10 +10,9 @@ services:
       - TZ=Europe/Madrid
       - NODE_TLS_REJECT_UNAUTHORIZED=0
     networks:
-      # - bunker_iot_agent_net
-      # - bunker_keyrock_net
-      # - bunker_orion_net
-      # - bunker_wilma_net
+      - iot_agent_net
+      - keyrock_net
+      - orion_net
       - mucc-sco-p1-net
   certificate:
     image: cert-gen
@@ -31,6 +30,8 @@ services:
   keyrock-db:
     image: mysql:5.7
     restart: always
+    networks:
+      - keyrock_net
     expose:
       - "3306"
     volumes:
@@ -41,6 +42,9 @@ services:
     depends_on:
       - keyrock-db
     image: fiware/idm:8.4.0
+    networks:
+      keyrock_net:
+        ipv4_address: 192.168.40.10
     ports:
       - 3005:3005
       - 3443:3443
@@ -48,7 +52,7 @@ services:
       - ./certs:/opt/fiware-idm/certs
     environment:
       - DEBUG=idm:*
-      - IDM_HOST=http://0.0.0.0:3005
+      - IDM_HOST=http://192.168.40.10:3005
       - IDM_PORT=3005
       - IDM_HTTPS_PORT=3443
       - IDM_HTTPS_ENABLED=true
@@ -63,6 +67,8 @@ services:
     restart: unless-stopped
     expose:
       - "27017"
+    networks:
+      - orion_net
     volumes:
       - ./orion-db/data:/data/db
     environment:
@@ -72,6 +78,8 @@ services:
     image: hivemq/hivemq-ce:2024.7
     ports:
       - 8883:8883
+    networks:
+      - iot_agent_net
     volumes:
       - ./hivemq/conf:/opt/hivemq/conf
       - ./certs:/certs
@@ -80,6 +88,9 @@ services:
     restart: unless-stopped
     ports:
       - 1028:1028
+    networks:
+      orion_net:
+        ipv4_address: 192.168.41.10
     volumes:
       - ./certs:/opt/orion/certs/
     environment:
@@ -88,7 +99,7 @@ services:
       - ORION_HTTPS=true
       - ORION_HTTPS_CERTFILE=/opt/orion/certs/cert.crt
       - ORION_HTTPS_KEYFILE=/opt/orion/certs/key.key
-      - ORION_HOST=https://10.0.2.15
+      - ORION_HOST=https://192.168.41.10
       - ORION_PORT=1028
       - NODE_TLS_REJECT_UNAUTHORIZED=0
   # CONFIGURACIÓN CON NGINX    
@@ -135,6 +146,13 @@ services:
     image: fiware/pep-proxy
     ports:
       - "1026:1026"
+    networks:
+      iot_agent_net:
+        ipv4_address: 192.168.42.20
+      keyrock_net:
+        ipv4_address: 192.168.40.20
+      orion_net:
+        ipv4_address: 192.168.41.20
     volumes:
       - ./certs:/opt/fiware-pep-proxy/certs
       - ./wilma-config/config.js:/opt/fiware-pep-proxy/config.js
@@ -148,11 +166,11 @@ services:
       - PEP_PROXY_USERNAME=pep_proxy_f196e6c7-4584-4918-88d3-d5ea0aeac36c
       - PEP_PASSWORD=pep_proxy_114a7dfc-f694-4800-bd42-a350600e629c
       # Keyrock
-      - PEP_PROXY_IDM_HOST=10.0.2.15
+      - PEP_PROXY_IDM_HOST=192.168.40.10
       - PEP_PROXY_IDM_PORT=3443
       - PEP_PROXY_IDM_SSL_ENABLED=true
       # Orion
-      - PEP_PROXY_APP_HOST=10.0.2.15
+      - PEP_PROXY_APP_HOST=192.168.41.10
       - PEP_PROXY_APP_PORT=1028
       - PEP_PROXY_APP_SSL_ENABLED=true
       - NODE_TLS_REJECT_UNAUTHORIZED=0
@@ -161,6 +179,8 @@ services:
     restart: unless-stopped
     expose:
       - "27017"
+    networks:
+      - iot_agent_net
     volumes:
       - ./iot-agent-json-db/data:/data/db
     environment:
@@ -169,6 +189,9 @@ services:
   iot-agent-json:
     image: fiware/iotagent-json:3.3.0
     restart: unless-stopped
+    networks:
+      iot_agent_net:
+        ipv4_address: 192.168.42.10
     ports:
       - 4061:4061 # North port: Management
       - 7896:7896 # South port: Data
@@ -177,15 +200,15 @@ services:
     environment:
       # IoT Agent Node Lib variables
       - IOTA_NORTH_PORT=4061
-      - IOTA_PROVIDER_URL=https://10.0.2.15:4061
+      - IOTA_PROVIDER_URL=https://192.168.42.10:4061
       - IOTA_REGISTRY_TYPE=mongodb
       - IOTA_MONGO_HOST=iot-agent-json-db
       - IOTA_MONGO_PORT=27017
       - IOTA_MONGO_USER=root
       - IOTA_MONGO_PASSWORD=root
       - IOTA_MONGO_AUTH_SOURCE=admin
-      - IOTA_CB_HOST=10.0.2.15
-      - IOTA_CB_URL=https://10.0.2.15:1026
+      - IOTA_CB_HOST=192.168.42.20
+      - IOTA_CB_URL=https://192.168.42.20:1026
       - IOTA_CB_PORT=1026
       - IOTA_CB_HTTPS=true
       - IOTA_HTTP_PORT=7896
@@ -196,9 +219,9 @@ services:
       - IOTA_AUTH_ENABLED=true
       - IOTA_AUTH_PERMANENT_TOKEN=true
       - IOTA_AUTH_TYPE=oauth2
-      - IOTA_AUTH_HOST=10.0.2.15
+      - IOTA_AUTH_HOST=192.168.42.20
       - IOTA_AUTH_PORT=3443
-      - IOTA_AUTH_URL=https://10.0.2.15:3443
+      - IOTA_AUTH_URL=https://192.168.42.20:3443 # Parece que funciona pero Quizá sea directamente Keyrock (192.168.40.10) No estoy seguro porque el IoT Agent debería atacar a Keyrock directamente ¿?
       - IOTA_AUTH_TOKEN_PATH=/oauth2/token
       - IOTA_AUTH_HEADER=Authorization
       - IOTA_AUTH_CLIENT_ID=d6ef7f8c-7c70-4b59-8e3d-121bcd316d47
@@ -206,3 +229,21 @@ services:
       - IOTA_AUTH_SSL=true
 networks:
   mucc-sco-p1-net: null
+  keyrock_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.40.0/24
+          gateway: 192.168.40.1
+  orion_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.41.0/24
+          gateway: 192.168.41.1
+  iot_agent_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.42.0/24
+          gateway: 192.168.42.1

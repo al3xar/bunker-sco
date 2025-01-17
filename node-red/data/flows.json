@@ -622,7 +622,7 @@
         "props": [
             {
                 "p": "keyrock_ip",
-                "v": "10.0.2.15",
+                "v": "192.168.40.10",
                 "vt": "str"
             },
             {
@@ -928,7 +928,7 @@
         "props": [
             {
                 "p": "orion_ip",
-                "v": "10.0.2.15",
+                "v": "192.168.41.20",
                 "vt": "str"
             },
             {
@@ -1758,7 +1758,7 @@
         "props": [
             {
                 "p": "iota_ip",
-                "v": "10.0.2.15",
+                "v": "192.168.42.10",
                 "vt": "str"
             },
             {
@@ -2023,7 +2023,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"services\":[{\"apikey\":\"1234567890\",\"cbroker\":\"https://10.0.2.15:1026\",\"entity_type\":\"Thing\",\"resource\":\"/iot/json\"}]}",
+        "payload": "{\"services\":[{\"apikey\":\"1234567890\",\"cbroker\":\"https://192.168.42.20:1026\",\"entity_type\":\"Thing\",\"resource\":\"/iot/json\"}]}",
         "payloadType": "json",
         "x": 200,
         "y": 340,
@@ -3346,7 +3346,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\t    \"cbroker\": \"https://10.0.2.15:1026\",\t    \"trust\": $globalContext(\"oauth2-token\")\t}",
+        "payload": "{\t    \"cbroker\": \"https://192.168.42.20:1026\",\t    \"trust\": $globalContext(\"oauth2-token\")\t}",
         "payloadType": "jsonata",
         "x": 200,
         "y": 500,

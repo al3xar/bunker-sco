@@ -622,7 +622,7 @@
         "props": [
             {
                 "p": "keyrock_ip",
-                "v": "10.0.2.15",
+                "v": "192.168.40.10",
                 "vt": "str"
             },
             {
@@ -928,7 +928,7 @@
         "props": [
             {
                 "p": "orion_ip",
-                "v": "10.0.2.15",
+                "v": "192.168.41.20",
                 "vt": "str"
             },
             {
@@ -1062,7 +1062,7 @@
         "type": "debug",
         "z": "7054fec8bee5107d",
         "name": "orion version",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1739,7 +1739,7 @@
         "type": "debug",
         "z": "7054fec8bee5107d",
         "name": "debug 2",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
