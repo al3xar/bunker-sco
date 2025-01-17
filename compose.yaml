@@ -130,17 +130,20 @@ services:
   wilma:
     depends_on:
       - keyrock
+      - iot-agent-json
+    restart: always
     image: fiware/pep-proxy
     ports:
       - "1026:1026"
     volumes:
-      - ./certs:/opt/fiware-pep-proxy/cert
-      # - ./wilma-config/config.js:/opt/fiware-pep-proxy/config.js
+      - ./certs:/opt/fiware-pep-proxy/certs
+      - ./wilma-config/config.js:/opt/fiware-pep-proxy/config.js
     environment:
       - PEP_PROXY_PDP=idm
       - PEP_PROXY_PORT=1026
+      - PEP_PROXY_HTTPS_PORT=1026
       - PEP_PROXY_HTTPS_ENABLED=true
-      - PEP_PROXY_AUTH_ENABLED=true
+      - PEP_PROXY_AUTH_ENABLED=false
       - PEP_PROXY_APP_ID=d6ef7f8c-7c70-4b59-8e3d-121bcd316d47
       - PEP_PROXY_USERNAME=pep_proxy_f196e6c7-4584-4918-88d3-d5ea0aeac36c
       - PEP_PASSWORD=pep_proxy_114a7dfc-f694-4800-bd42-a350600e629c
@@ -182,10 +185,14 @@ services:
       - IOTA_MONGO_PASSWORD=root
       - IOTA_MONGO_AUTH_SOURCE=admin
       - IOTA_CB_HOST=10.0.2.15
-      - IOTA_CB_URL=https://10.0.2.15:1028
+      - IOTA_CB_URL=https://10.0.2.15:1026
       - IOTA_CB_PORT=1026
       - IOTA_CB_HTTPS=true
       - IOTA_HTTP_PORT=7896
+      - IOTA_HTTP_KEY=/opt/iotagent-json/certs/key.key
+      - IOTA_HTTP_CERT=/opt/iotagent-json/certs/cert.crt
+      - IOTA_HTTP_REHECT_UNAUTHORIZED=false
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
       - IOTA_AUTH_ENABLED=true
       - IOTA_AUTH_PERMANENT_TOKEN=true
       - IOTA_AUTH_TYPE=oauth2
@@ -196,10 +203,6 @@ services:
       - IOTA_AUTH_HEADER=Authorization
       - IOTA_AUTH_CLIENT_ID=d6ef7f8c-7c70-4b59-8e3d-121bcd316d47
       - IOTA_AUTH_CLIENT_SECRET=79f7a7b3-fe5c-47c5-a3e5-c69592e2a47a
-      - IOTA_HTTP_KEY=/opt/iotagent-json/certs/key.key
-      - IOTA_HTTP_CERT=/opt/iotagent-json/certs/cert.crt
       - IOTA_AUTH_SSL=true
-      - IOTA_HTTP_REHECT_UNAUTHORIZED=false
-      - NODE_TLS_REJECT_UNAUTHORIZED=0
 networks:
   mucc-sco-p1-net: null
