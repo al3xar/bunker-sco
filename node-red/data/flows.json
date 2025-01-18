@@ -2,7 +2,7 @@
     {
         "id": "e9891387af72915b",
         "type": "tab",
-        "label": "Hive MQ (SSL/TLS)",
+        "label": "SENSORES Y ACTUADORES",
         "disabled": false,
         "info": "",
         "env": []
@@ -27,6 +27,14 @@
         "id": "92d8fd98132b13ea",
         "type": "tab",
         "label": "IoT Agent",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "66697df425b4ad85",
+        "type": "tab",
+        "label": "Flow 1",
         "disabled": false,
         "info": "",
         "env": []
@@ -191,7 +199,7 @@
         "type": "mqtt in",
         "z": "e9891387af72915b",
         "name": "Hive MQ (SSL/TLS)",
-        "topic": "sco",
+        "topic": "ventilacion/calidad",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "405695e50f5ae861",
@@ -199,8 +207,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 650,
-        "y": 800,
+        "x": 730,
+        "y": 1560,
         "wires": [
             [
                 "e61fa2f5825d83d2",
@@ -221,8 +229,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 920,
+        "x": 1030,
+        "y": 1500,
         "wires": []
     },
     {
@@ -239,8 +247,8 @@
         "correl": "",
         "expiry": "",
         "broker": "405695e50f5ae861",
-        "x": 620,
-        "y": 860,
+        "x": 520,
+        "y": 1560,
         "wires": []
     },
     {
@@ -253,6 +261,11 @@
                 "p": "payload"
             },
             {
+                "p": "calidad_aire",
+                "v": "calidad_aire",
+                "vt": "flow"
+            },
+            {
                 "p": "topic",
                 "vt": "str"
             }
@@ -261,11 +274,11 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "sco",
+        "topic": "ventilacion/calidad",
         "payload": "",
         "payloadType": "date",
-        "x": 150,
-        "y": 820,
+        "x": 140,
+        "y": 1560,
         "wires": [
             [
                 "aec29c4ea58a4058"
@@ -277,18 +290,19 @@
         "type": "function",
         "z": "e9891387af72915b",
         "name": "function 1",
-        "func": "\nconst r = Math.random() * 10;\nif(r >= 5) {\n    msg.payload = {\"o\":0}\n} else {\n    msg.payload = {\"o\":1}\n}\n\nreturn msg;",
+        "func": "\nconst r = Math.random() * 10;\nlet value = msg.calidad_aire ?? 95\nif (r <4 && value > 0) {\n    value -= 1\n} else if (r < 7 && value < 100) {\n    value += 1\n}\nmsg.payload = {\"quality\": value}\nmsg.calidad_aire = value\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
-        "y": 820,
+        "x": 320,
+        "y": 1560,
         "wires": [
             [
-                "54c59a41384deb2f"
+                "54c59a41384deb2f",
+                "309ad082a26a3dc7"
             ]
         ]
     },
@@ -329,8 +343,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 170,
-        "y": 460,
+        "x": 150,
+        "y": 260,
         "wires": [
             [
                 "c6ec2cdea656ea3b"
@@ -384,8 +398,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 400,
-        "y": 460,
+        "x": 380,
+        "y": 260,
         "wires": [
             []
         ]
@@ -448,8 +462,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 920,
-        "y": 800,
+        "x": 960,
+        "y": 1560,
         "wires": [
             [
                 "eb66f4247665c72b"
@@ -492,7 +506,7 @@
             }
         ],
         "x": 1150,
-        "y": 800,
+        "y": 1560,
         "wires": [
             [
                 "003dec97bb626d6e"
@@ -507,8 +521,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 1430,
-        "y": 900,
+        "x": 1450,
+        "y": 1580,
         "wires": [
             [
                 "67516e659d6af62f"
@@ -520,7 +534,7 @@
         "type": "debug",
         "z": "e9891387af72915b",
         "name": "update devices",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -528,8 +542,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1580,
-        "y": 800,
+        "x": 1640,
+        "y": 1560,
         "wires": []
     },
     {
@@ -550,8 +564,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1330,
-        "y": 800,
+        "x": 1310,
+        "y": 1560,
         "wires": [
             [
                 "67516e659d6af62f"
@@ -567,18 +581,18 @@
         "z": "e9891387af72915b",
         "name": "ACTUADORES",
         "info": "",
-        "x": 160,
-        "y": 520,
+        "x": 140,
+        "y": 320,
         "wires": []
     },
     {
         "id": "c6f261cdc1aaab2d",
         "type": "comment",
         "z": "e9891387af72915b",
-        "name": "Get entity attribute: on",
+        "name": "Get Ventilador Value",
         "info": "",
-        "x": 180,
-        "y": 580,
+        "x": 150,
+        "y": 380,
         "wires": []
     },
     {
@@ -609,12 +623,12 @@
             },
             {
                 "p": "entity_id",
-                "v": "urn:ngsi-ld:Lamp:001",
+                "v": "urn:ngsi-ld:Ventilador:001",
                 "vt": "str"
             },
             {
                 "p": "attr",
-                "v": "o",
+                "v": "on",
                 "vt": "str"
             },
             {
@@ -628,8 +642,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 180,
-        "y": 620,
+        "x": 160,
+        "y": 420,
         "wires": [
             [
                 "3d166ad6a0baed6d"
@@ -671,8 +685,8 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 410,
-        "y": 620,
+        "x": 390,
+        "y": 420,
         "wires": [
             [
                 "21d4cf663b0ba120"
@@ -687,8 +701,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 590,
-        "y": 620,
+        "x": 570,
+        "y": 420,
         "wires": [
             [
                 "2b556029e5e70aa2"
@@ -727,8 +741,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 390,
-        "y": 520,
+        "x": 370,
+        "y": 320,
         "wires": [
             [
                 "d35503254f9cfbbd"
@@ -775,8 +789,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 620,
-        "y": 520,
+        "x": 600,
+        "y": 320,
         "wires": [
             []
         ]
@@ -795,8 +809,8 @@
         "correl": "",
         "expiry": "",
         "broker": "405695e50f5ae861",
-        "x": 1020,
-        "y": 620,
+        "x": 1000,
+        "y": 420,
         "wires": []
     },
     {
@@ -812,8 +826,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 1290,
-        "y": 620,
+        "x": 1270,
+        "y": 420,
         "wires": [
             [
                 "e58937583f29cf3e"
@@ -846,8 +860,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 760,
-        "y": 620,
+        "x": 740,
+        "y": 420,
         "wires": [
             [
                 "9c590dd38934232d"
@@ -863,11 +877,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1540,
-        "y": 620,
+        "x": 1520,
+        "y": 420,
         "wires": []
     },
     {
@@ -877,7 +892,2224 @@
         "name": "SENSORES",
         "info": "",
         "x": 130,
-        "y": 760,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "467a12e2553d6a31",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Get Molino  Value",
+        "info": "",
+        "x": 140,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "cd1984e83e0341f4",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:Molino:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 540,
+        "wires": [
+            [
+                "b0ca9a4b96193de7"
+            ]
+        ]
+    },
+    {
+        "id": "b0ca9a4b96193de7",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 390,
+        "y": 540,
+        "wires": [
+            [
+                "bed907ceb34a25b5"
+            ]
+        ]
+    },
+    {
+        "id": "bed907ceb34a25b5",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 570,
+        "y": 540,
+        "wires": [
+            [
+                "9463bf0ce5ee8aaf"
+            ]
+        ]
+    },
+    {
+        "id": "ffd72757e6e26215",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 1000,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "86b4e09808f0a2d2",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "electricidad/molino",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1270,
+        "y": 540,
+        "wires": [
+            [
+                "a881ccb1e93ee783"
+            ]
+        ]
+    },
+    {
+        "id": "9463bf0ce5ee8aaf",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "electricidad/molino",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 540,
+        "wires": [
+            [
+                "ffd72757e6e26215"
+            ]
+        ]
+    },
+    {
+        "id": "a881ccb1e93ee783",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "f7c0378a1f8e0ca8",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Get Bateria Activated  Value",
+        "info": "",
+        "x": 180,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "630acc758e67b8ee",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:Bateria:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 680,
+        "wires": [
+            [
+                "aee7e0c9640a795a"
+            ]
+        ]
+    },
+    {
+        "id": "aee7e0c9640a795a",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 390,
+        "y": 680,
+        "wires": [
+            [
+                "a8d0fe9cd42c5291"
+            ]
+        ]
+    },
+    {
+        "id": "a8d0fe9cd42c5291",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 570,
+        "y": 680,
+        "wires": [
+            [
+                "ed133a879d569d09"
+            ]
+        ]
+    },
+    {
+        "id": "4ad8c127c5f5e365",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 1000,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "0f3650a0799d972c",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "electricidad/bateria",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1270,
+        "y": 680,
+        "wires": [
+            [
+                "93c074dbfb72a642"
+            ]
+        ]
+    },
+    {
+        "id": "ed133a879d569d09",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "electricidad/bateria",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 680,
+        "wires": [
+            [
+                "4ad8c127c5f5e365"
+            ]
+        ]
+    },
+    {
+        "id": "93c074dbfb72a642",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "089e1e44bbb2bc06",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Get EPuerta Locked  Value",
+        "info": "",
+        "x": 170,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "c7c8ee93a178d57b",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:EPuerta:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "locked",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 820,
+        "wires": [
+            [
+                "e83c5a446c25b99e"
+            ]
+        ]
+    },
+    {
+        "id": "e83c5a446c25b99e",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 390,
+        "y": 820,
+        "wires": [
+            [
+                "9030ffd46c783b80"
+            ]
+        ]
+    },
+    {
+        "id": "9030ffd46c783b80",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 570,
+        "y": 820,
+        "wires": [
+            [
+                "cb57718237f8cf14"
+            ]
+        ]
+    },
+    {
+        "id": "55d48b120dbb5f89",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 1000,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "c0990b9b4f38e8d8",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "aislamiento/epuerta",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1270,
+        "y": 820,
+        "wires": [
+            [
+                "cc8407d6ee5f06dd"
+            ]
+        ]
+    },
+    {
+        "id": "cb57718237f8cf14",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "aislamiento/epuerta",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 820,
+        "wires": [
+            [
+                "55d48b120dbb5f89"
+            ]
+        ]
+    },
+    {
+        "id": "cc8407d6ee5f06dd",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "7359e1f518c2b08f",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Get IPuerta Locked  Value",
+        "info": "",
+        "x": 170,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "9bf7ab622980292a",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:IPuerta:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "locked",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 960,
+        "wires": [
+            [
+                "bea3c848e428a59a"
+            ]
+        ]
+    },
+    {
+        "id": "bea3c848e428a59a",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 390,
+        "y": 960,
+        "wires": [
+            [
+                "62e93be744283466"
+            ]
+        ]
+    },
+    {
+        "id": "62e93be744283466",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 570,
+        "y": 960,
+        "wires": [
+            [
+                "cd7418f962852c4d"
+            ]
+        ]
+    },
+    {
+        "id": "fd2d5fd4f7de30dd",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 1000,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "31c00662b84bc45a",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "aislamiento/ipuerta",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1270,
+        "y": 960,
+        "wires": [
+            [
+                "219dcc8913c171a2"
+            ]
+        ]
+    },
+    {
+        "id": "cd7418f962852c4d",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "aislamiento/ipuerta",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 960,
+        "wires": [
+            [
+                "fd2d5fd4f7de30dd"
+            ]
+        ]
+    },
+    {
+        "id": "219dcc8913c171a2",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "8d301a249795d2a9",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Get Hidraulico Compuertas  Value",
+        "info": "",
+        "x": 190,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "71c18c874b7baddb",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:Compuertas:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "locked",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 1080,
+        "wires": [
+            [
+                "28481ea6c3fae147"
+            ]
+        ]
+    },
+    {
+        "id": "28481ea6c3fae147",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 390,
+        "y": 1080,
+        "wires": [
+            [
+                "1489da6934cc7a46"
+            ]
+        ]
+    },
+    {
+        "id": "1489da6934cc7a46",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 570,
+        "y": 1080,
+        "wires": [
+            [
+                "afd09a685cacf560"
+            ]
+        ]
+    },
+    {
+        "id": "380fa2519e8f6231",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 1000,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "2e6a16eab3cc3fd6",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "hidraulico/compuertas",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1270,
+        "y": 1080,
+        "wires": [
+            [
+                "9ed418945207860b"
+            ]
+        ]
+    },
+    {
+        "id": "afd09a685cacf560",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "hidraulico/compuertas",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 1080,
+        "wires": [
+            [
+                "380fa2519e8f6231"
+            ]
+        ]
+    },
+    {
+        "id": "9ed418945207860b",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "4cddbb62308f87c6",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Get Hidraulico Top Nivel Agua  Value",
+        "info": "",
+        "x": 200,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "5f568f73486c03e3",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:TNivel:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "locked",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 1220,
+        "wires": [
+            [
+                "61bc3d52e2d09d4d"
+            ]
+        ]
+    },
+    {
+        "id": "61bc3d52e2d09d4d",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 390,
+        "y": 1220,
+        "wires": [
+            [
+                "29dff6c273e54d05"
+            ]
+        ]
+    },
+    {
+        "id": "29dff6c273e54d05",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 570,
+        "y": 1220,
+        "wires": [
+            [
+                "4cb816189dd5dce1"
+            ]
+        ]
+    },
+    {
+        "id": "25fa512b351036e0",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 1000,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "72d894c9ff5cf8d5",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "hidraulico/tnivel",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1270,
+        "y": 1220,
+        "wires": [
+            [
+                "72b47b68da8ae439"
+            ]
+        ]
+    },
+    {
+        "id": "4cb816189dd5dce1",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "hidraulico/tnivel",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 1220,
+        "wires": [
+            [
+                "25fa512b351036e0"
+            ]
+        ]
+    },
+    {
+        "id": "72b47b68da8ae439",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "f58da56e52fc4531",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Get Hidraulico Top Nivel Agua  Value",
+        "info": "",
+        "x": 200,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "ae97bba96f85e15e",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "urn:ngsi-ld:LNivel:001",
+                "vt": "str"
+            },
+            {
+                "p": "attr",
+                "v": "locked",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 1340,
+        "wires": [
+            [
+                "6de8b5cd6430ec59"
+            ]
+        ]
+    },
+    {
+        "id": "6de8b5cd6430ec59",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}/attrs/{{{attr}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 390,
+        "y": 1340,
+        "wires": [
+            [
+                "db67dff2aa8316ab"
+            ]
+        ]
+    },
+    {
+        "id": "db67dff2aa8316ab",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 570,
+        "y": 1340,
+        "wires": [
+            [
+                "0d788d972f85b290"
+            ]
+        ]
+    },
+    {
+        "id": "3577d13e286040f6",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 1000,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "a1830f3c6cce3ea1",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "hidraulico/lnivel",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1270,
+        "y": 1340,
+        "wires": [
+            [
+                "9d2946528a137eb2"
+            ]
+        ]
+    },
+    {
+        "id": "0d788d972f85b290",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "hidraulico/lnivel",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 1340,
+        "wires": [
+            [
+                "3577d13e286040f6"
+            ]
+        ]
+    },
+    {
+        "id": "9d2946528a137eb2",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "309ad082a26a3dc7",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "calidad_aire",
+                "pt": "flow",
+                "to": "calidad_aire",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 1640,
+        "wires": [
+            [
+                "c6a482ffef5c2df8"
+            ]
+        ]
+    },
+    {
+        "id": "c6a482ffef5c2df8",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "d278e01001b97fad",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Set Calidad Aire Value",
+        "info": "",
+        "x": 160,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "c01730705b5a303a",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "electricidad/tbateria",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 730,
+        "y": 1800,
+        "wires": [
+            [
+                "9b8c683eea13e0fa",
+                "3b1a6f240059b429"
+            ]
+        ]
+    },
+    {
+        "id": "9b8c683eea13e0fa",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "recevied data from Hive MQ (SSL/TLS)",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "e3dd98642a7b1ac3",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 520,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "ae23efd526b99d06",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "calidad_aire",
+                "v": "temp_bateria",
+                "vt": "flow"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "electricidad/tbateria",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1800,
+        "wires": [
+            [
+                "81f33317742dbdc2"
+            ]
+        ]
+    },
+    {
+        "id": "81f33317742dbdc2",
+        "type": "function",
+        "z": "e9891387af72915b",
+        "name": "function 2",
+        "func": "\nconst r = Math.random() * 10;\nlet value = msg.temp_bateria ?? 25\nif (r <4 && value > 0) {\n    value -= 1\n} else if (r < 7 && value < 100) {\n    value += 1\n}\nmsg.payload = {\"temp\": value}\nmsg.temp_bateria = value\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1800,
+        "wires": [
+            [
+                "e3dd98642a7b1ac3",
+                "b5282cbeddd4da32"
+            ]
+        ]
+    },
+    {
+        "id": "3b1a6f240059b429",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fiware_service",
+                "pt": "msg",
+                "to": "fiware_service",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "fiware_servicepath",
+                "pt": "msg",
+                "to": "fiware_servicepath",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "iota_ip",
+                "pt": "msg",
+                "to": "iota_ip",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "iota_puerto_datos",
+                "pt": "msg",
+                "to": "iota_puerto_datos",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "api_key",
+                "pt": "msg",
+                "to": "1234567890",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "et001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 1800,
+        "wires": [
+            [
+                "32c1ca88841cd107"
+            ]
+        ]
+    },
+    {
+        "id": "32c1ca88841cd107",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 1150,
+        "y": 1800,
+        "wires": [
+            [
+                "7730349ce1930f07"
+            ]
+        ]
+    },
+    {
+        "id": "f91b7c3b207ec0f9",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1450,
+        "y": 1820,
+        "wires": [
+            [
+                "58714a212f4b67d6"
+            ]
+        ]
+    },
+    {
+        "id": "58714a212f4b67d6",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "update devices",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1640,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "7730349ce1930f07",
+        "type": "switch",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1310,
+        "y": 1800,
+        "wires": [
+            [
+                "58714a212f4b67d6"
+            ],
+            [
+                "f91b7c3b207ec0f9"
+            ]
+        ]
+    },
+    {
+        "id": "b5282cbeddd4da32",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "temp_bateria",
+                "pt": "flow",
+                "to": "temp_bateria",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 1880,
+        "wires": [
+            [
+                "17644e59ad807d94"
+            ]
+        ]
+    },
+    {
+        "id": "17644e59ad807d94",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 1940,
+        "wires": []
+    },
+    {
+        "id": "fdbb68f6e8067879",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Set Temperatura Bateria Value",
+        "info": "",
+        "x": 180,
+        "y": 1760,
+        "wires": []
+    },
+    {
+        "id": "f7e73366ab3bec1a",
+        "type": "mqtt in",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "electricidad/tbateria",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "405695e50f5ae861",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 730,
+        "y": 2040,
+        "wires": [
+            [
+                "254049d49ee1e06b",
+                "c44145badfdd9d5b"
+            ]
+        ]
+    },
+    {
+        "id": "254049d49ee1e06b",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "recevied data from Hive MQ (SSL/TLS)",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 1980,
+        "wires": []
+    },
+    {
+        "id": "c717c2c2a952accb",
+        "type": "mqtt out",
+        "z": "e9891387af72915b",
+        "name": "Hive MQ (SSL/TLS)",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "405695e50f5ae861",
+        "x": 520,
+        "y": 2040,
+        "wires": []
+    },
+    {
+        "id": "7834bc5e8abe10a2",
+        "type": "inject",
+        "z": "e9891387af72915b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "calidad_aire",
+                "v": "velocidad_viento",
+                "vt": "flow"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "electricidad/tbateria",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 2040,
+        "wires": [
+            [
+                "73a0f616d1b9a9d9"
+            ]
+        ]
+    },
+    {
+        "id": "73a0f616d1b9a9d9",
+        "type": "function",
+        "z": "e9891387af72915b",
+        "name": "function 3",
+        "func": "\nconst r = Math.random() * 10;\nlet value = msg.velocidad_viento ?? 40\nif (r <4 && value > 0) {\n    value -= 1\n} else if (r < 7 && value < 100) {\n    value += 1\n}\nmsg.payload = {\"temp\": value}\nmsg.velocidad_viento = value\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 2040,
+        "wires": [
+            [
+                "c717c2c2a952accb",
+                "aea0ed4217d2ae56"
+            ]
+        ]
+    },
+    {
+        "id": "c44145badfdd9d5b",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fiware_service",
+                "pt": "msg",
+                "to": "fiware_service",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "fiware_servicepath",
+                "pt": "msg",
+                "to": "fiware_servicepath",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "iota_ip",
+                "pt": "msg",
+                "to": "iota_ip",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "iota_puerto_datos",
+                "pt": "msg",
+                "to": "iota_puerto_datos",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "api_key",
+                "pt": "msg",
+                "to": "1234567890",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "et001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 2040,
+        "wires": [
+            [
+                "1a2bd4a1abfdc495"
+            ]
+        ]
+    },
+    {
+        "id": "1a2bd4a1abfdc495",
+        "type": "http request",
+        "z": "e9891387af72915b",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 1150,
+        "y": 2040,
+        "wires": [
+            [
+                "0023156a988f15b1"
+            ]
+        ]
+    },
+    {
+        "id": "316e3d3d90203958",
+        "type": "json",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1450,
+        "y": 2060,
+        "wires": [
+            [
+                "ac2a8388b98ad589"
+            ]
+        ]
+    },
+    {
+        "id": "ac2a8388b98ad589",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "update devices",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1640,
+        "y": 2040,
+        "wires": []
+    },
+    {
+        "id": "0023156a988f15b1",
+        "type": "switch",
+        "z": "e9891387af72915b",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1310,
+        "y": 2040,
+        "wires": [
+            [
+                "ac2a8388b98ad589"
+            ],
+            [
+                "316e3d3d90203958"
+            ]
+        ]
+    },
+    {
+        "id": "aea0ed4217d2ae56",
+        "type": "change",
+        "z": "e9891387af72915b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "velocidad_viento",
+                "pt": "flow",
+                "to": "velocidad_viento",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 2120,
+        "wires": [
+            [
+                "5c3bc1636077e0f3"
+            ]
+        ]
+    },
+    {
+        "id": "5c3bc1636077e0f3",
+        "type": "debug",
+        "z": "e9891387af72915b",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 2180,
+        "wires": []
+    },
+    {
+        "id": "fe27f8344f808535",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "Set Velocidad Viento Value",
+        "info": "",
+        "x": 170,
+        "y": 2000,
         "wires": []
     },
     {
@@ -1561,7 +3793,7 @@
             },
             {
                 "p": "entity_id",
-                "v": "urn:ngsi-ld:Lamp:001",
+                "v": "Thing:lamp001",
                 "vt": "str"
             },
             {
@@ -1736,7 +3968,7 @@
             },
             {
                 "p": "entity_id",
-                "v": "urn:ngsi-ld:Lamp:001",
+                "v": "Thing:lamp002",
                 "vt": "str"
             },
             {
@@ -2015,6 +4247,496 @@
         "x": 570,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "fccff133fa43d20e",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:Calidad:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 940,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "8019be669ba7835e",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:Ventilador:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1000,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "ed70522b54eeb45a",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:Viento:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1060,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "70edb664b865141b",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:Molino:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1120,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "67a85bbba4c3912d",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:Bateria:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1180,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "0b608e27d66ffcbc",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:TBateria:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1240,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "43d42e339efdc124",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:EPuerta:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1320,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "f78099bf149aebe1",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:IPuerta:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1380,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "eb4a6881d65a4077",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:SIncendios:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1440,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "554efe3c00ce6d2b",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:Compuertas:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1500,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "0ec9c658ab7b0b4b",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:TNivel:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1560,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "d039760c91b7aa79",
+        "type": "change",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entity_id",
+                "pt": "msg",
+                "to": "urn:ngsi-ld:LNivel:001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 1620,
+        "wires": [
+            [
+                "eb32e90e33b68cd6"
+            ]
+        ]
+    },
+    {
+        "id": "94cce532fb8b4d84",
+        "type": "inject",
+        "z": "7054fec8bee5107d",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "orion_ip",
+                "v": "orion_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "orion_puerto",
+                "v": "orion_puerto",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "entity_id",
+                "v": "Thing:lamp001",
+                "vt": "str"
+            },
+            {
+                "p": "oauth2-token",
+                "v": "oauth2-token",
+                "vt": "global"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 180,
+        "y": 1320,
+        "wires": [
+            [
+                "fccff133fa43d20e",
+                "8019be669ba7835e",
+                "ed70522b54eeb45a",
+                "70edb664b865141b",
+                "67a85bbba4c3912d",
+                "0b608e27d66ffcbc",
+                "43d42e339efdc124",
+                "f78099bf149aebe1",
+                "eb4a6881d65a4077",
+                "554efe3c00ce6d2b",
+                "0ec9c658ab7b0b4b",
+                "d039760c91b7aa79"
+            ]
+        ]
+    },
+    {
+        "id": "eb32e90e33b68cd6",
+        "type": "http request",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{orion_ip}}}:{{{orion_puerto}}}/v2/entities/{{{entity_id}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "X-Auth-token",
+                "valueType": "msg",
+                "valueValue": "oauth2-token"
+            }
+        ],
+        "x": 930,
+        "y": 1320,
+        "wires": [
+            [
+                "b1839476860cd220"
+            ]
+        ]
+    },
+    {
+        "id": "73295e939a63b903",
+        "type": "json",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1270,
+        "y": 1360,
+        "wires": [
+            [
+                "2e5e29e1e655f38f"
+            ]
+        ]
+    },
+    {
+        "id": "2e5e29e1e655f38f",
+        "type": "debug",
+        "z": "7054fec8bee5107d",
+        "name": "delete entity",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1450,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "b1839476860cd220",
+        "type": "switch",
+        "z": "7054fec8bee5107d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1110,
+        "y": 1320,
+        "wires": [
+            [
+                "2e5e29e1e655f38f"
+            ],
+            [
+                "73295e939a63b903"
+            ]
+        ]
     },
     {
         "id": "afda95cebe7746db",
@@ -2738,7 +5460,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"devices\":[{\"protocol\":\"IoTA-UL\",\"entity_name\":\"urn:ngsi-ld:Device:contador12\",\"entity_type\":\"multientity\",\"attributes\":[{\"object_id\":\"cont1\",\"name\":\"vol\",\"type\":\"Text\",\"entity_name\":\"urn:ngsi-ld:Device:WaterMeterSoria01\",\"entity_type\":\"WaterMeter\"},{\"object_id\":\"cont2\",\"name\":\"vol\",\"type\":\"Text\",\"entity_name\":\"urn:ngsi-ld:Device:WaterMeterSoria02\",\"entity_type\":\"WaterMeter\"},{\"object_id\":\"cont3\",\"name\":\"vol\",\"type\":\"Text\",\"entity_name\":\"urn:ngsi-ld:Device:WaterMeterSoria03\",\"entity_type\":\"WaterMeter\"}],\"device_id\":\"contador12\"}]}",
+        "payload": "{\"devices\":[{\"device_id\":\"vc001\",\"entity_name\":\"urn:ngsi-ld:Calidad:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"quality\",\"type\":\"Number\"}]},{\"device_id\":\"vv001\",\"entity_name\":\"urn:ngsi-ld:Ventilador:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"on\",\"type\":\"Boolean\"}]},{\"device_id\":\"ev001\",\"entity_name\":\"urn:ngsi-ld:Viento:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"speed\",\"type\":\"Number\"}]},{\"device_id\":\"em001\",\"entity_name\":\"urn:ngsi-ld:Molino:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"on\",\"type\":\"Boolean\"}]},{\"device_id\":\"eb001\",\"entity_name\":\"urn:ngsi-ld:Bateria:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"on\",\"type\":\"Boolean\"}]},{\"device_id\":\"et001\",\"entity_name\":\"urn:ngsi-ld:TBateria:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"temp\",\"type\":\"Number\"}]},{\"device_id\":\"ae001\",\"entity_name\":\"urn:ngsi-ld:EPuerta:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"locked\",\"type\":\"Boolean\"}]},{\"device_id\":\"ai001\",\"entity_name\":\"urn:ngsi-ld:IPuerta:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"locked\",\"type\":\"Boolean\"}]},{\"device_id\":\"as001\",\"entity_name\":\"urn:ngsi-ld:SIncendios:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"alarm\",\"type\":\"Boolean\"}]},{\"device_id\":\"hc001\",\"entity_name\":\"urn:ngsi-ld:Compuertas:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"locked\",\"type\":\"Boolean\"}]},{\"device_id\":\"hnt001\",\"entity_name\":\"urn:ngsi-ld:TNivel:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"locked\",\"type\":\"Boolean\"}]},{\"device_id\":\"hnb001\",\"entity_name\":\"urn:ngsi-ld:LNivel:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"locked\",\"type\":\"Boolean\"}]}]}",
         "payloadType": "json",
         "x": 200,
         "y": 980,
@@ -3744,5 +6466,1068 @@
         "x": 570,
         "y": 920,
         "wires": []
+    },
+    {
+        "id": "a81d3b5dc582f44b",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_datos",
+                "v": "iota_puerto_datos",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "api_key",
+                "v": "1234567890",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 2180,
+        "wires": [
+            [
+                "8ed633444144507b",
+                "42f4fa61ff6c5da5",
+                "a9d6394f969abd77",
+                "baaf49c287c2603e",
+                "e35b8cf389b68690",
+                "271dbb24f6c54b5a",
+                "0b9dfb727a320863",
+                "692da0ba0f351fd9",
+                "595694dc534b4ac5",
+                "c31dc995def4fde1",
+                "a7e27477b0510288",
+                "8afc857a0710eed6"
+            ]
+        ]
+    },
+    {
+        "id": "2ef6ee7c5c8fd52a",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://{{{iota_ip}}}:{{{iota_puerto_datos}}}/iot/json?k={{{api_key}}}&i={{{device_id}}}",
+        "tls": "a5e11d29c103c79c",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 830,
+        "y": 2180,
+        "wires": [
+            [
+                "788a9a7395a1a13b"
+            ]
+        ]
+    },
+    {
+        "id": "e19b650824b3b37f",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1130,
+        "y": 2180,
+        "wires": [
+            [
+                "b02e56ad3daa9ead"
+            ]
+        ]
+    },
+    {
+        "id": "b02e56ad3daa9ead",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "update devices",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 2180,
+        "wires": []
+    },
+    {
+        "id": "788a9a7395a1a13b",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1010,
+        "y": 2180,
+        "wires": [
+            [
+                "b02e56ad3daa9ead"
+            ],
+            [
+                "e19b650824b3b37f"
+            ]
+        ]
+    },
+    {
+        "id": "8ed633444144507b",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "vc001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"quality\": 95}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 1880,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "3b639b5376847252",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "SET INITIAL VALUES OF DEVICES",
+        "info": "",
+        "x": 220,
+        "y": 1840,
+        "wires": []
+    },
+    {
+        "id": "42f4fa61ff6c5da5",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "vv001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"on\": \"false\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 1940,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "a9d6394f969abd77",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "ev001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"speed\": \"50\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2000,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "baaf49c287c2603e",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "em001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"on\": \"false\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2060,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "e35b8cf389b68690",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "eb001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"on\": \"false\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2120,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "271dbb24f6c54b5a",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "et001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"temp\": 25}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2180,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "0b9dfb727a320863",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "ae001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"locked\": \"true\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2260,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "692da0ba0f351fd9",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "ai001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"locked\": \"true\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2320,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "595694dc534b4ac5",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "as001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"alarm\": \"false\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2380,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "c31dc995def4fde1",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "hc001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"locked\": \"false\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2440,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "8afc857a0710eed6",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "hnt001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"locked\": \"false\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2500,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "a7e27477b0510288",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "hnb001",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"locked\": \"false\"}",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 2560,
+        "wires": [
+            [
+                "2ef6ee7c5c8fd52a"
+            ]
+        ]
+    },
+    {
+        "id": "a37089732b370f96",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 3000,
+        "wires": [
+            [
+                "845f5433b14df17c",
+                "5e85a4a570939668",
+                "6e3641af194c094d",
+                "3a4c4c6ecbc9d2a2",
+                "912ce13f2d439165",
+                "eb07e5e71e87d221",
+                "119add5390bf123d",
+                "7c82b63e9f9f6a2a",
+                "afaaa8db8bcfe2a9",
+                "a293e0bcca0b6d05",
+                "5402607a85c07d85",
+                "fa81f74f50f9366b"
+            ]
+        ]
+    },
+    {
+        "id": "f3b6a6387e49278d",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1110,
+        "y": 2980,
+        "wires": [
+            [
+                "7057db3ddc4f4344"
+            ]
+        ]
+    },
+    {
+        "id": "7057db3ddc4f4344",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "update devices",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 2980,
+        "wires": []
+    },
+    {
+        "id": "c3bdbf1ff88b6113",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 970,
+        "y": 2980,
+        "wires": [
+            [
+                "7057db3ddc4f4344"
+            ],
+            [
+                "f3b6a6387e49278d"
+            ]
+        ]
+    },
+    {
+        "id": "845f5433b14df17c",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "vc001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 2700,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "ebb4ad13c5d55596",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "DELETE ALL DEVICES",
+        "info": "",
+        "x": 140,
+        "y": 2640,
+        "wires": []
+    },
+    {
+        "id": "5e85a4a570939668",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "vv001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 2760,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "6e3641af194c094d",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "ev001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 2820,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "3a4c4c6ecbc9d2a2",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "em001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 2880,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "912ce13f2d439165",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "eb001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 2940,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "eb07e5e71e87d221",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "et001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 3000,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "119add5390bf123d",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "ae001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 3080,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "7c82b63e9f9f6a2a",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "ai001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 3140,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "afaaa8db8bcfe2a9",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "as001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 3200,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "a293e0bcca0b6d05",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "hc001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 3260,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "fa81f74f50f9366b",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "hnt001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 3320,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "5402607a85c07d85",
+        "type": "change",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device_id",
+                "pt": "msg",
+                "to": "hnb001",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 3380,
+        "wires": [
+            [
+                "3bc0d37393eda8b2"
+            ]
+        ]
+    },
+    {
+        "id": "3bc0d37393eda8b2",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/devices/{{{device_id}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            }
+        ],
+        "x": 810,
+        "y": 2980,
+        "wires": [
+            [
+                "c3bdbf1ff88b6113"
+            ]
+        ]
     }
 ]
