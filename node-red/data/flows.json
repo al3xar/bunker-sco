@@ -32,6 +32,14 @@
         "env": []
     },
     {
+        "id": "a95e3ebaba0112f6",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "a802ef2933ec375e",
         "type": "mqtt-broker",
         "name": "Hive MQ",
@@ -2594,7 +2602,7 @@
         "name": "Delete devices",
         "info": "",
         "x": 180,
-        "y": 1100,
+        "y": 1300,
         "wires": []
     },
     {
@@ -2635,7 +2643,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 200,
-        "y": 1180,
+        "y": 1380,
         "wires": [
             [
                 "ae02c784ab5505f5"
@@ -2672,7 +2680,7 @@
             }
         ],
         "x": 410,
-        "y": 1200,
+        "y": 1400,
         "wires": [
             [
                 "9fccb76d487e1355"
@@ -2688,7 +2696,7 @@
         "action": "",
         "pretty": false,
         "x": 750,
-        "y": 1240,
+        "y": 1440,
         "wires": [
             [
                 "307ab2c17874330c"
@@ -2709,7 +2717,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 930,
-        "y": 1200,
+        "y": 1400,
         "wires": []
     },
     {
@@ -2731,7 +2739,7 @@
         "repair": false,
         "outputs": 2,
         "x": 590,
-        "y": 1200,
+        "y": 1400,
         "wires": [
             [
                 "307ab2c17874330c"
@@ -2748,7 +2756,7 @@
         "name": "Delete device: lamp001",
         "info": "",
         "x": 200,
-        "y": 1140,
+        "y": 1340,
         "wires": []
     },
     {
@@ -2789,7 +2797,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 200,
-        "y": 1220,
+        "y": 1420,
         "wires": [
             [
                 "ae02c784ab5505f5"
@@ -2803,7 +2811,7 @@
         "name": "Delete device: lamp002",
         "info": "",
         "x": 200,
-        "y": 1260,
+        "y": 1460,
         "wires": []
     },
     {
@@ -2813,7 +2821,7 @@
         "name": "Update devices",
         "info": "",
         "x": 180,
-        "y": 1340,
+        "y": 1540,
         "wires": []
     },
     {
@@ -2864,7 +2872,7 @@
         "payload": "{\"o\":0}",
         "payloadType": "json",
         "x": 200,
-        "y": 1420,
+        "y": 1620,
         "wires": [
             [
                 "a979b20a7b5672ec"
@@ -2907,7 +2915,7 @@
             }
         ],
         "x": 410,
-        "y": 1440,
+        "y": 1640,
         "wires": [
             [
                 "bcd885fa6993b402"
@@ -2923,7 +2931,7 @@
         "action": "",
         "pretty": false,
         "x": 750,
-        "y": 1480,
+        "y": 1680,
         "wires": [
             [
                 "20b49813fd8b3f91"
@@ -2944,7 +2952,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 940,
-        "y": 1440,
+        "y": 1640,
         "wires": []
     },
     {
@@ -2966,7 +2974,7 @@
         "repair": false,
         "outputs": 2,
         "x": 590,
-        "y": 1440,
+        "y": 1640,
         "wires": [
             [
                 "20b49813fd8b3f91"
@@ -2983,7 +2991,7 @@
         "name": "Update device lamp001: set on to 0",
         "info": "",
         "x": 240,
-        "y": 1380,
+        "y": 1580,
         "wires": []
     },
     {
@@ -3039,7 +3047,7 @@
         "payload": "{\"o\":1}",
         "payloadType": "json",
         "x": 200,
-        "y": 1460,
+        "y": 1660,
         "wires": [
             [
                 "a979b20a7b5672ec"
@@ -3053,7 +3061,7 @@
         "name": "Update device lamp001: set on to 1",
         "info": "",
         "x": 240,
-        "y": 1500,
+        "y": 1700,
         "wires": []
     },
     {
@@ -3104,7 +3112,7 @@
         "payload": "{\"on\":0}",
         "payloadType": "json",
         "x": 200,
-        "y": 1620,
+        "y": 1820,
         "wires": [
             [
                 "32dbbe4b64bcb3df"
@@ -3147,7 +3155,7 @@
             }
         ],
         "x": 410,
-        "y": 1640,
+        "y": 1840,
         "wires": [
             [
                 "a5967ce22ebdec24"
@@ -3163,7 +3171,7 @@
         "action": "",
         "pretty": false,
         "x": 750,
-        "y": 1680,
+        "y": 1880,
         "wires": [
             [
                 "165ee383cfc8dc52"
@@ -3184,7 +3192,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 940,
-        "y": 1640,
+        "y": 1840,
         "wires": []
     },
     {
@@ -3206,7 +3214,7 @@
         "repair": false,
         "outputs": 2,
         "x": 590,
-        "y": 1640,
+        "y": 1840,
         "wires": [
             [
                 "165ee383cfc8dc52"
@@ -3223,7 +3231,7 @@
         "name": "Update device lamp002: set on to 0",
         "info": "",
         "x": 240,
-        "y": 1580,
+        "y": 1780,
         "wires": []
     },
     {
@@ -3274,7 +3282,7 @@
         "payload": "{\"on\":1}",
         "payloadType": "json",
         "x": 200,
-        "y": 1660,
+        "y": 1860,
         "wires": [
             [
                 "32dbbe4b64bcb3df"
@@ -3288,7 +3296,7 @@
         "name": "Update device lamp002: set on to 1",
         "info": "",
         "x": 240,
-        "y": 1700,
+        "y": 1900,
         "wires": []
     },
     {
@@ -3458,6 +3466,166 @@
             ],
             [
                 "184d09ddccd6a54f"
+            ]
+        ]
+    },
+    {
+        "id": "000a9ac36956c858",
+        "type": "comment",
+        "z": "92d8fd98132b13ea",
+        "name": "Create all other devices",
+        "info": "",
+        "x": 200,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "2ff8bcbf153357fa",
+        "type": "inject",
+        "z": "92d8fd98132b13ea",
+        "name": "execute request",
+        "props": [
+            {
+                "p": "iota_ip",
+                "v": "iota_ip",
+                "vt": "flow"
+            },
+            {
+                "p": "iota_puerto_gestion",
+                "v": "iota_puerto_gestion",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_service",
+                "v": "fiware_service",
+                "vt": "flow"
+            },
+            {
+                "p": "fiware_servicepath",
+                "v": "fiware_servicepath",
+                "vt": "flow"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"devices\":[{\"device_id\":\"vc001\",\"entity_name\":\"urn:ngsi-ld:Calidad:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"quality\",\"type\":\"Number\"}]},{\"device_id\":\"vv001\",\"entity_name\":\"urn:ngsi-ld:Ventilador:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"on\",\"type\":\"Boolean\"}]},{\"device_id\":\"ev001\",\"entity_name\":\"urn:ngsi-ld:Viento:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"speed\",\"type\":\"Number\"}]},{\"device_id\":\"em001\",\"entity_name\":\"urn:ngsi-ld:Molino:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"on\",\"type\":\"Boolean\"}]},{\"device_id\":\"eb001\",\"entity_name\":\"urn:ngsi-ld:Bateria:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"on\",\"type\":\"Boolean\"}]},{\"device_id\":\"et001\",\"entity_name\":\"urn:ngsi-ld:TBateria:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"temp\",\"type\":\"Number\"}]}]}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 1120,
+        "wires": [
+            [
+                "d153b15c6bf4e79a"
+            ]
+        ]
+    },
+    {
+        "id": "d153b15c6bf4e79a",
+        "type": "http request",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://{{{iota_ip}}}:{{{iota_puerto_gestion}}}/iot/devices",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-Service",
+                "valueType": "msg",
+                "valueValue": "fiware_service"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Fiware-ServicePath",
+                "valueType": "msg",
+                "valueValue": "fiware_servicepath"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Content-Type",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 410,
+        "y": 1120,
+        "wires": [
+            [
+                "f6c3d4e8be5a78b4"
+            ]
+        ]
+    },
+    {
+        "id": "39f867a0195bc647",
+        "type": "json",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 750,
+        "y": 1160,
+        "wires": [
+            [
+                "7f9bba7d0779ab53"
+            ]
+        ]
+    },
+    {
+        "id": "7f9bba7d0779ab53",
+        "type": "debug",
+        "z": "92d8fd98132b13ea",
+        "name": "create devices",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "f6c3d4e8be5a78b4",
+        "type": "switch",
+        "z": "92d8fd98132b13ea",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 1120,
+        "wires": [
+            [
+                "7f9bba7d0779ab53"
+            ],
+            [
+                "39f867a0195bc647"
             ]
         ]
     }
