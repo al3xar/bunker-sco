@@ -2,5 +2,9 @@
     "name": "node-red-project",
     "description": "A Node-RED Project",
     "version": "0.0.1",
-    "private": true
+    "private": true,
+    "dependencies": {
+        "node-red-contrib-https": "~2.0.0",
+        "node-red-contrib-https-server": "~0.0.2"
+    }
 }

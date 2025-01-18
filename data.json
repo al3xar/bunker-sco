@@ -1,0 +1,46 @@
+{
+  "devices ": [
+    {
+      "device_id ": "vc001 ",
+      "entity_name ": "urn:ngsi-ld:Calidad:001 ",
+      "entity_type ": "Thing ",
+      "transport ": "HTTPS ",
+      "attributes ": [{ "name ": "quality ", "type ": "Number " }]
+    },
+    {
+      "device_id ": "vv001 ",
+      "entity_name ": "urn:ngsi-ld:Ventilador:001 ",
+      "entity_type ": "Thing ",
+      "transport ": "HTTPS ",
+      "attributes ": [{ "name ": "on ", "type ": "Boolean " }]
+    },
+    {
+      "device_id ": "ev001 ",
+      "entity_name ": "urn:ngsi-ld:Viento:001 ",
+      "entity_type ": "Thing ",
+      "transport ": "HTTPS ",
+      "attributes ": [{ "name ": "speed ", "type ": "Number " }]
+    },
+    {
+      "device_id ": "em001 ",
+      "entity_name ": "urn:ngsi-ld:Molino:001 ",
+      "entity_type ": "Thing ",
+      "transport ": "HTTPS ",
+      "attributes ": [{ "name ": "on ", "type ": "Boolean " }]
+    },
+    {
+      "device_id ": "eb001 ",
+      "entity_name ": "urn:ngsi-ld:Bateria:001 ",
+      "entity_type ": "Thing ",
+      "transport ": "HTTPS ",
+      "attributes ": [{ "name ": "on ", "type ": "Boolean " }]
+    },
+    {
+      "device_id ": "et001 ",
+      "entity_name ": "urn:ngsi-ld:TBateria:001 ",
+      "entity_type ": "Thing ",
+      "transport ": "HTTPS ",
+      "attributes ": [{ "name ": "temp ", "type ": "Number " }]
+    }
+  ]
+}

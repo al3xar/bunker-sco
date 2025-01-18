@@ -1,0 +1,67 @@
+<script type="text/javascript">
+    RED.nodes.registerType('lets-encrypt', {
+        category: 'input',
+        defaults: {
+            staging: {value:false},
+            debug: {value:false},
+            store: { value: "~/.config/acme/" },
+            http: { value: "80" },
+            https: { value: "443" },
+            name: { value: "" },
+        },
+        credentials: {
+            email: { type: "text" },
+            username: { type: "text" },
+            password: { type: "password" }
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "www.png",
+        label: function () {
+            return this.name || "let's encrypt";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="lets-encrypt">
+    <div class="form-row">
+        <label for="node-input-staging"><i class="fa fa-server"></i> Staging</label>
+        <input type="checkbox" id="node-input-staging" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-input-debug"><i class="fa fa-server"></i> Debug</label>
+        <input type="checkbox" id="node-input-debug" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-input-http"><i class="fa fa-podcast"></i> Http</label>
+        <input type="text" id="node-input-http" placeholder="80">
+    </div>
+    <div class="form-row">
+        <label for="node-input-https"><i class="fa fa-certificate"></i> Https</label>
+        <input type="text" id="node-input-https" placeholder="443">
+    </div>
+    <div class="form-row">
+        <label for="node-input-store"><i class="fa fa-key"></i> Private key</label>
+        <input type="text" id="node-input-store" placeholder="~/.config/acme/">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-email"><i class="fa fa-address-book"></i> Mail</label>
+        <input type="text" id="node-input-email" placeholder="email@example.com">
+    </div>
+    <div class="form-row">
+        <label for="node-input-username"><i class="fa fa-user-circle-o"></i> Username</label>
+        <input type="text" id="node-input-username" placeholder="Username">
+    </div>
+    <div class="form-row">
+        <label for="node-input-password"><i class="fa fa-user-secret"></i> Password</label>
+        <input type="text" id="node-input-password" placeholder="Password">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="lets-encrypt">
+    <p>A simple node that generate let's encrypt certificate and serve https</p>
+</script>
