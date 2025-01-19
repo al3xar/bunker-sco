@@ -14,6 +14,7 @@ services:
       - keyrock_net
       - orion_net
       - mucc-sco-p1-net
+      - app_net
   certificate:
     image: cert-gen
     volumes:
@@ -79,7 +80,8 @@ services:
     ports:
       - 8883:8883
     networks:
-      - iot_agent_net
+      iot_agent_net:
+        ipv4_address: 192.168.42.50
     volumes:
       - ./hivemq/conf:/opt/hivemq/conf
       - ./certs:/certs
@@ -102,42 +104,6 @@ services:
       - ORION_HOST=https://192.168.41.10
       - ORION_PORT=1028
       - NODE_TLS_REJECT_UNAUTHORIZED=0
-  # CONFIGURACIÓN CON NGINX    
-  # nginx:
-  #   depends_on:
-  #     - wilma
-  #   image: nginx:latest
-  #   restart: unless-stopped
-  #   ports:
-  #     - 1026:1026
-  #   volumes:
-  #     - ./nginx/conf/:/etc/nginx/conf.d/:ro
-  #     - ./nginx/www/default/:/var/www/default/:ro
-  # wilma:
-  #   depends_on:
-  #     - keyrock
-  #   image: fiware/pep-proxy
-  #   ports:
-  #     - "1027:1027"
-  #   # volumes:
-  #   #   - ./certs:/opt/fiware-pep-proxy/certs
-  #   #   - ./wilma-config/config.js:/opt/fiware-pep-proxy/config.js
-  #   environment:
-  #     - PEP_PROXY_PDP=idm
-  #     - PEP_PROXY_AUTH_FOR_NGINX=true
-  #     - PEP_PROXY_PORT=1027
-  #     - PEP_PROXY_HTTPS_ENABLED=false
-  #     - PEP_PROXY_AUTH_ENABLED=false
-  #     - PEP_PROXY_APP_ID=d6ef7f8c-7c70-4b59-8e3d-121bcd316d47
-  #     - PEP_PROXY_USERNAME=pep_proxy_f196e6c7-4584-4918-88d3-d5ea0aeac36c
-  #     - PEP_PASSWORD=pep_proxy_114a7dfc-f694-4800-bd42-a350600e629c
-  #     - PEP_PROXY_IDM_HOST=10.0.2.15
-  #     - PEP_PROXY_IDM_PORT=3005 # https 3443
-  #     # Keyrock
-  #     - PEP_PROXY_IDM_HOST=10.0.2.15
-  #     - PEP_PROXY_IDM_PORT=3005
-  #     - PEP_PROXY_IDM_SSL_ENABLED=false
-  #     - NODE_TLS_REJECT_UNAUTHORIZED=0
   wilma:
     depends_on:
       - keyrock
@@ -153,6 +119,8 @@ services:
         ipv4_address: 192.168.40.20
       orion_net:
         ipv4_address: 192.168.41.20
+      app_net:
+        ipv4_address: 192.168.20.20
     volumes:
       - ./certs:/opt/fiware-pep-proxy/certs
       - ./wilma-config/config.js:/opt/fiware-pep-proxy/config.js
@@ -229,6 +197,12 @@ services:
       - IOTA_AUTH_SSL=true
 networks:
   mucc-sco-p1-net: null
+  app_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.20.0/24
+          gateway: 192.168.20.1
   keyrock_net:
     driver: bridge
     ipam:
