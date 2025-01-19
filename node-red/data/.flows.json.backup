@@ -9495,7 +9495,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 670,
+        "x": 710,
         "y": 500,
         "wires": [
             [
@@ -9511,12 +9511,11 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 810,
+        "x": 850,
         "y": 500,
         "wires": [
             [
-                "ee563c1ecbce1bd8",
-                "2d0ec03bdb9eb469"
+                "ee563c1ecbce1bd8"
             ]
         ]
     },
@@ -10403,7 +10402,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 670,
+        "x": 710,
         "y": 620,
         "wires": [
             [
@@ -10419,7 +10418,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 810,
+        "x": 850,
         "y": 620,
         "wires": [
             [
@@ -10528,7 +10527,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 670,
+        "x": 710,
         "y": 740,
         "wires": [
             [
@@ -10544,7 +10543,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 810,
+        "x": 850,
         "y": 740,
         "wires": [
             [
@@ -10852,7 +10851,9 @@
         "x": 810,
         "y": 1580,
         "wires": [
-            []
+            [
+                "a33f8ad067826ff9"
+            ]
         ]
     },
     {
@@ -10860,7 +10861,7 @@
         "type": "function",
         "z": "66697df425b4ad85",
         "name": "function 7",
-        "func": "msg.payload = msg.payload.value != \"true\"\nreturn msg;",
+        "func": "msg.payload = msg.payload.value == \"true\"\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -10871,7 +10872,8 @@
         "y": 1580,
         "wires": [
             [
-                "9f1e79a2c5f11866"
+                "9f1e79a2c5f11866",
+                "98aafc84f0038bf1"
             ]
         ]
     },
@@ -10902,22 +10904,6 @@
                 "9888c46d3c3821a5"
             ]
         ]
-    },
-    {
-        "id": "2d0ec03bdb9eb469",
-        "type": "debug",
-        "z": "66697df425b4ad85",
-        "name": "debug 11",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 950,
-        "y": 440,
-        "wires": []
     },
     {
         "id": "ad72db13a66233d8",
@@ -11359,12 +11345,12 @@
                 "vt": "global"
             }
         ],
-        "repeat": "",
+        "repeat": "1",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 140,
+        "x": 150,
         "y": 220,
         "wires": [
             [
@@ -11382,5 +11368,37 @@
                 "aa59c4bdc685138b"
             ]
         ]
+    },
+    {
+        "id": "98aafc84f0038bf1",
+        "type": "debug",
+        "z": "66697df425b4ad85",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "26cbd89119f62c67",
+        "type": "debug",
+        "z": "66697df425b4ad85",
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 1520,
+        "wires": []
     }
 ]
