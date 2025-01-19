@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('https-response', {
+        category: 'output',
+        defaults: {
+        },
+        credentials: {
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "www.png",
+        label: function () {
+            return this.name || "https-response";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="https-response">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="https-response">
+    <p>A simple node that hold https response</p>
+</script>
