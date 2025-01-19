@@ -3987,9 +3987,9 @@
         "id": "fa335cdad9909dc1",
         "type": "comment",
         "z": "e9891387af72915b",
-        "name": "Set Velocidad Viento Value",
+        "name": "Set Capacidad Tanque",
         "info": "",
-        "x": 170,
+        "x": 160,
         "y": 2420,
         "wires": []
     },
@@ -9634,22 +9634,6 @@
         ]
     },
     {
-        "id": "4cf24103dd0db395",
-        "type": "json",
-        "z": "66697df425b4ad85",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 530,
-        "y": 740,
-        "wires": [
-            [
-                "e232dae6dbca59e1"
-            ]
-        ]
-    },
-    {
         "id": "5da7141ea85a6642",
         "type": "function",
         "z": "66697df425b4ad85",
@@ -10014,7 +9998,7 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 720,
+        "x": 880,
         "y": 860,
         "wires": [
             [
@@ -10126,23 +10110,7 @@
         "y": 860,
         "wires": [
             [
-                "3a9f5041365f0ad1"
-            ]
-        ]
-    },
-    {
-        "id": "3a9f5041365f0ad1",
-        "type": "json",
-        "z": "66697df425b4ad85",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 530,
-        "y": 860,
-        "wires": [
-            [
-                "5ab943cbff8f67a0"
+                "428070559bb13b97"
             ]
         ]
     },
@@ -10158,7 +10126,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 880,
+        "x": 1040,
         "y": 860,
         "wires": [
             [
@@ -10220,7 +10188,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1060,
+        "x": 1220,
         "y": 860,
         "wires": [
             [
@@ -10263,7 +10231,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 1250,
+        "x": 1410,
         "y": 860,
         "wires": [
             [
@@ -10279,7 +10247,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 1570,
+        "x": 1730,
         "y": 880,
         "wires": [
             [
@@ -10300,7 +10268,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1760,
+        "x": 1920,
         "y": 860,
         "wires": []
     },
@@ -10322,7 +10290,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1430,
+        "x": 1590,
         "y": 860,
         "wires": [
             [
@@ -10359,11 +10327,12 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 720,
+        "x": 880,
         "y": 980,
         "wires": [
             [
-                "0088a1176edd51b1"
+                "0088a1176edd51b1",
+                "658b5f9e5648c6f9"
             ]
         ]
     },
@@ -10371,7 +10340,7 @@
         "id": "b424375371e883c3",
         "type": "comment",
         "z": "66697df425b4ad85",
-        "name": "Compuerta Exterior Switch",
+        "name": "Compuerta Interior Switch",
         "info": "",
         "x": 190,
         "y": 940,
@@ -10471,23 +10440,7 @@
         "y": 980,
         "wires": [
             [
-                "8a22e431c392e15c"
-            ]
-        ]
-    },
-    {
-        "id": "8a22e431c392e15c",
-        "type": "json",
-        "z": "66697df425b4ad85",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 530,
-        "y": 980,
-        "wires": [
-            [
-                "cde5f0cc2c0192a8"
+                "2a195b17c664b460"
             ]
         ]
     },
@@ -10503,7 +10456,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 880,
+        "x": 1040,
         "y": 980,
         "wires": [
             [
@@ -10565,7 +10518,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1060,
+        "x": 1220,
         "y": 980,
         "wires": [
             [
@@ -10608,7 +10561,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 1250,
+        "x": 1410,
         "y": 980,
         "wires": [
             [
@@ -10624,7 +10577,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 1570,
+        "x": 1730,
         "y": 1000,
         "wires": [
             [
@@ -10645,7 +10598,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1760,
+        "x": 1920,
         "y": 980,
         "wires": []
     },
@@ -10667,7 +10620,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1430,
+        "x": 1590,
         "y": 980,
         "wires": [
             [
@@ -11560,5 +11513,109 @@
                 "9888c46d3c3821a5"
             ]
         ]
+    },
+    {
+        "id": "25eb605b37245316",
+        "type": "function",
+        "z": "66697df425b4ad85",
+        "name": "function 13",
+        "func": "\nreturn msg.value;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 980,
+        "wires": [
+            [
+                "cde5f0cc2c0192a8"
+            ]
+        ]
+    },
+    {
+        "id": "46a974286a07cebc",
+        "type": "function",
+        "z": "66697df425b4ad85",
+        "name": "function 14",
+        "func": "msg.payload = msg.payload.value;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 860,
+        "wires": [
+            [
+                "5ab943cbff8f67a0"
+            ]
+        ]
+    },
+    {
+        "id": "4cf24103dd0db395",
+        "type": "json",
+        "z": "66697df425b4ad85",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 740,
+        "wires": [
+            [
+                "e232dae6dbca59e1"
+            ]
+        ]
+    },
+    {
+        "id": "428070559bb13b97",
+        "type": "json",
+        "z": "66697df425b4ad85",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 860,
+        "wires": [
+            [
+                "46a974286a07cebc"
+            ]
+        ]
+    },
+    {
+        "id": "2a195b17c664b460",
+        "type": "json",
+        "z": "66697df425b4ad85",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 550,
+        "y": 980,
+        "wires": [
+            [
+                "25eb605b37245316"
+            ]
+        ]
+    },
+    {
+        "id": "658b5f9e5648c6f9",
+        "type": "debug",
+        "z": "66697df425b4ad85",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 920,
+        "wires": []
     }
 ]
