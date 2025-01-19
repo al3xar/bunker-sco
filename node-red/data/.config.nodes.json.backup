@@ -445,5 +445,35 @@
                 "file": "/data/node_modules/node-red-contrib-https/https/https.js"
             }
         }
+    },
+    "node-red-contrib-https-server": {
+        "name": "node-red-contrib-https-server",
+        "version": "0.0.2",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "https-response": {
+                "name": "https-response",
+                "types": [
+                    "https-response"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-https-server",
+                "file": "/data/node_modules/node-red-contrib-https-server/src/lets-encrypt-response.js"
+            },
+            "lets-encrypt": {
+                "name": "lets-encrypt",
+                "types": [
+                    "lets-encrypt"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-https-server",
+                "file": "/data/node_modules/node-red-contrib-https-server/src/lets-encrypt.js"
+            }
+        }
     }
 }

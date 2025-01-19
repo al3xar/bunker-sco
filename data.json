@@ -121,26 +121,26 @@
       ]
     },
     {
-      "device_id": "hnt001",
-      "entity_name": "urn:ngsi-ld:TNivel:001",
+      "device_id": "hca001",
+      "entity_name": "urn:ngsi-ld:CalidadAgua:001",
       "entity_type": "Thing",
       "transport": "HTTPS",
       "attributes": [
         {
-          "name": "locked",
-          "type": "Boolean"
+          "name": "quality",
+          "type": "Number"
         }
       ]
     },
     {
-      "device_id": "hnb001",
-      "entity_name": "urn:ngsi-ld:LNivel:001",
+      "device_id": "hct001",
+      "entity_name": "urn:ngsi-ld:CapacidadTanque:001",
       "entity_type": "Thing",
       "transport": "HTTPS",
       "attributes": [
         {
-          "name": "locked",
-          "type": "Boolean"
+          "name": "capacity",
+          "type": "Number"
         }
       ]
     }

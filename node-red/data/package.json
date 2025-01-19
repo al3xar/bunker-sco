@@ -5,6 +5,7 @@
     "private": true,
     "dependencies": {
         "node-red-contrib-https": "~2.0.0",
-        "node-red-contrib-https-server": "~0.0.2"
+        "node-red-contrib-https-server": "~0.0.2",
+        "node-red-dashboard": "~3.6.5"
     }
 }
