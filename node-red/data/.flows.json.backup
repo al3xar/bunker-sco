@@ -8405,7 +8405,7 @@
         "props": [
             {
                 "p": "orion_ip",
-                "v": "192.168.41.20",
+                "v": "192.168.20.20",
                 "vt": "str"
             },
             {
@@ -11384,7 +11384,7 @@
                 "vt": "global"
             }
         ],
-        "repeat": "1",
+        "repeat": "5",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
