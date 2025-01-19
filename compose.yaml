@@ -79,7 +79,8 @@ services:
     ports:
       - 8883:8883
     networks:
-      - iot_agent_net
+      iot_agent_net:
+        ipv4_address: 192.168.42.50
     volumes:
       - ./hivemq/conf:/opt/hivemq/conf
       - ./certs:/certs
