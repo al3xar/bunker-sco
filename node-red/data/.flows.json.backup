@@ -564,7 +564,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1600,
+        "x": 1640,
         "y": 220,
         "wires": []
     },
@@ -646,8 +646,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 190,
-        "y": 60,
+        "x": 130,
+        "y": 40,
         "wires": [
             [
                 "8404c4b135ff9b53"
@@ -694,8 +694,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
-        "y": 60,
+        "x": 340,
+        "y": 40,
         "wires": [
             []
         ]
@@ -706,8 +706,8 @@
         "z": "f817f6a7671b1a08",
         "name": "OAuth2 Token",
         "info": "",
-        "x": 130,
-        "y": 140,
+        "x": 110,
+        "y": 100,
         "wires": []
     },
     {
@@ -716,18 +716,18 @@
         "z": "f817f6a7671b1a08",
         "name": "Get OAuth2 token",
         "info": "",
-        "x": 190,
-        "y": 180,
+        "x": 170,
+        "y": 140,
         "wires": []
     },
     {
         "id": "659f04d50c1867aa",
         "type": "comment",
         "z": "f817f6a7671b1a08",
-        "name": "Get OAuth2 token: admin",
+        "name": "Get OAuth2 token: admin (temporary)",
         "info": "",
-        "x": 210,
-        "y": 220,
+        "x": 230,
+        "y": 260,
         "wires": []
     },
     {
@@ -736,8 +736,8 @@
         "z": "f817f6a7671b1a08",
         "name": "Get OAuth2 token: admin (permanent)",
         "info": "",
-        "x": 250,
-        "y": 340,
+        "x": 230,
+        "y": 180,
         "wires": []
     },
     {
@@ -777,8 +777,8 @@
         "topic": "",
         "payload": "username=admin@test.com&password=1234567890&grant_type=password",
         "payloadType": "str",
-        "x": 200,
-        "y": 260,
+        "x": 180,
+        "y": 300,
         "wires": [
             [
                 "cf62b1799b4e981f"
@@ -822,8 +822,8 @@
         "topic": "",
         "payload": "username=admin@test.com&password=1234567890&grant_type=password&scope=permanent",
         "payloadType": "str",
-        "x": 200,
-        "y": 300,
+        "x": 180,
+        "y": 220,
         "wires": [
             [
                 "cf62b1799b4e981f"
@@ -853,8 +853,8 @@
                 "valueValue": "application/x-www-form-urlencoded"
             }
         ],
-        "x": 410,
-        "y": 280,
+        "x": 390,
+        "y": 220,
         "wires": [
             [
                 "c24d14ef18de6f27"
@@ -869,8 +869,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 280,
+        "x": 550,
+        "y": 220,
         "wires": [
             [
                 "6076f249899ffa4b",
@@ -891,8 +891,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 950,
-        "y": 280,
+        "x": 730,
+        "y": 220,
         "wires": []
     },
     {
@@ -914,8 +914,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 970,
-        "y": 320,
+        "x": 750,
+        "y": 260,
         "wires": [
             []
         ]
@@ -952,8 +952,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 190,
-        "y": 60,
+        "x": 130,
+        "y": 40,
         "wires": [
             [
                 "c4ae7c4d8859dada"
@@ -1000,8 +1000,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
-        "y": 60,
+        "x": 340,
+        "y": 40,
         "wires": [
             []
         ]
@@ -1033,8 +1033,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 180,
+        "x": 140,
+        "y": 140,
         "wires": [
             [
                 "e62757f60f8d3c2c"
@@ -1049,8 +1049,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 180,
+        "x": 490,
+        "y": 160,
         "wires": [
             [
                 "32b4139a92f2c460"
@@ -1070,8 +1070,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 180,
+        "x": 650,
+        "y": 160,
         "wires": []
     },
     {
@@ -1080,8 +1080,8 @@
         "z": "7054fec8bee5107d",
         "name": "Check orion version",
         "info": "",
-        "x": 190,
-        "y": 140,
+        "x": 130,
+        "y": 100,
         "wires": []
     },
     {
@@ -1107,8 +1107,8 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 410,
-        "y": 180,
+        "x": 330,
+        "y": 140,
         "wires": [
             [
                 "2e4d60ebdee5e648",
@@ -1122,8 +1122,8 @@
         "z": "7054fec8bee5107d",
         "name": "Entities",
         "info": "",
-        "x": 110,
-        "y": 260,
+        "x": 90,
+        "y": 200,
         "wires": []
     },
     {
@@ -1132,8 +1132,8 @@
         "z": "7054fec8bee5107d",
         "name": "Get entities",
         "info": "",
-        "x": 170,
-        "y": 300,
+        "x": 150,
+        "y": 240,
         "wires": []
     },
     {
@@ -1173,8 +1173,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 340,
+        "x": 180,
+        "y": 280,
         "wires": [
             [
                 "1af99b4c98de8c0c"
@@ -1216,8 +1216,8 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 410,
-        "y": 340,
+        "x": 390,
+        "y": 280,
         "wires": [
             [
                 "dc85eb069a6a3d69"
@@ -1232,8 +1232,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 340,
+        "x": 550,
+        "y": 280,
         "wires": [
             [
                 "e75be13027181133"
@@ -1253,8 +1253,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 340,
+        "x": 710,
+        "y": 280,
         "wires": []
     },
     {
@@ -1263,8 +1263,8 @@
         "z": "7054fec8bee5107d",
         "name": "Delete entity",
         "info": "",
-        "x": 170,
-        "y": 420,
+        "x": 150,
+        "y": 320,
         "wires": []
     },
     {
@@ -1309,8 +1309,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 460,
+        "x": 180,
+        "y": 360,
         "wires": [
             [
                 "9b18efd711f33d37"
@@ -1352,8 +1352,8 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 410,
-        "y": 460,
+        "x": 390,
+        "y": 360,
         "wires": [
             [
                 "8daaa12956f641b6"
@@ -1368,8 +1368,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 500,
+        "x": 690,
+        "y": 400,
         "wires": [
             [
                 "6f053ac64b5daac7"
@@ -1389,8 +1389,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 460,
+        "x": 870,
+        "y": 360,
         "wires": []
     },
     {
@@ -1411,8 +1411,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 590,
-        "y": 460,
+        "x": 550,
+        "y": 360,
         "wires": [
             [
                 "6f053ac64b5daac7"
@@ -1428,8 +1428,8 @@
         "z": "7054fec8bee5107d",
         "name": "Entity attributes",
         "info": "",
-        "x": 140,
-        "y": 580,
+        "x": 120,
+        "y": 420,
         "wires": []
     },
     {
@@ -1438,8 +1438,8 @@
         "z": "7054fec8bee5107d",
         "name": "Get entity attribute: all",
         "info": "",
-        "x": 200,
-        "y": 620,
+        "x": 180,
+        "y": 460,
         "wires": []
     },
     {
@@ -1484,8 +1484,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 660,
+        "x": 180,
+        "y": 500,
         "wires": [
             [
                 "9de147ce6994653c"
@@ -1527,8 +1527,8 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 410,
-        "y": 660,
+        "x": 390,
+        "y": 500,
         "wires": [
             [
                 "9b42f963c4d62f5d"
@@ -1543,8 +1543,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 660,
+        "x": 550,
+        "y": 500,
         "wires": [
             [
                 "b597fe798f1f88dd"
@@ -1564,8 +1564,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 660,
+        "x": 740,
+        "y": 500,
         "wires": []
     },
     {
@@ -1574,8 +1574,8 @@
         "z": "7054fec8bee5107d",
         "name": "Get entity attribute: on",
         "info": "",
-        "x": 200,
-        "y": 740,
+        "x": 180,
+        "y": 540,
         "wires": []
     },
     {
@@ -1625,8 +1625,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 780,
+        "x": 180,
+        "y": 580,
         "wires": [
             [
                 "af20204629072774"
@@ -1668,8 +1668,8 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 590,
-        "y": 780,
+        "x": 450,
+        "y": 580,
         "wires": [
             [
                 "de6f6f7b709321d4"
@@ -1684,8 +1684,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 780,
+        "x": 610,
+        "y": 580,
         "wires": [
             [
                 "0193fa992c255b5d"
@@ -1705,8 +1705,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 780,
+        "x": 800,
+        "y": 580,
         "wires": []
     },
     {
@@ -1726,8 +1726,8 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 380,
-        "y": 840,
+        "x": 320,
+        "y": 660,
         "wires": [
             [
                 "287761bfbe953e9a"
@@ -1746,8 +1746,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 570,
-        "y": 80,
+        "x": 500,
+        "y": 100,
         "wires": []
     },
     {
@@ -1758,7 +1758,7 @@
         "props": [
             {
                 "p": "iota_ip",
-                "v": "10.0.2.15",
+                "v": "192.168.42.10",
                 "vt": "str"
             },
             {
@@ -1787,8 +1787,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 190,
-        "y": 60,
+        "x": 130,
+        "y": 40,
         "wires": [
             [
                 "7a94521ccf179fd6"
@@ -1842,8 +1842,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
-        "y": 60,
+        "x": 340,
+        "y": 40,
         "wires": [
             []
         ]
@@ -1854,8 +1854,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Services",
         "info": "",
-        "x": 120,
-        "y": 140,
+        "x": 100,
+        "y": 100,
         "wires": []
     },
     {
@@ -1864,8 +1864,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Get services",
         "info": "",
-        "x": 170,
-        "y": 180,
+        "x": 150,
+        "y": 140,
         "wires": []
     },
     {
@@ -1900,8 +1900,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 220,
+        "x": 180,
+        "y": 180,
         "wires": [
             [
                 "10f08a66cf41e5b5"
@@ -1937,8 +1937,8 @@
                 "valueValue": "fiware_servicepath"
             }
         ],
-        "x": 410,
-        "y": 220,
+        "x": 370,
+        "y": 180,
         "wires": [
             [
                 "dfe50a4f024c0c11"
@@ -1953,8 +1953,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 220,
+        "x": 530,
+        "y": 180,
         "wires": [
             [
                 "6f7381788c9295a7"
@@ -1974,8 +1974,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 220,
+        "x": 690,
+        "y": 180,
         "wires": []
     },
     {
@@ -1984,8 +1984,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Create services",
         "info": "",
-        "x": 180,
-        "y": 300,
+        "x": 160,
+        "y": 220,
         "wires": []
     },
     {
@@ -2023,10 +2023,10 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"services\":[{\"apikey\":\"1234567890\",\"cbroker\":\"https://10.0.2.15:1026\",\"entity_type\":\"Thing\",\"resource\":\"/iot/json\"}]}",
+        "payload": "{\"services\":[{\"apikey\":\"1234567890\",\"cbroker\":\"https://192.168.42.20:1026\",\"entity_type\":\"Thing\",\"resource\":\"/iot/json\"}]}",
         "payloadType": "json",
-        "x": 200,
-        "y": 340,
+        "x": 180,
+        "y": 260,
         "wires": [
             [
                 "bcb967bbe5180d32"
@@ -2068,8 +2068,8 @@
                 "valueValue": "application/json"
             }
         ],
-        "x": 410,
-        "y": 340,
+        "x": 370,
+        "y": 260,
         "wires": [
             [
                 "13e8d9d188e778ea"
@@ -2084,8 +2084,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 380,
+        "x": 690,
+        "y": 300,
         "wires": [
             [
                 "61b84aa178332fca"
@@ -2105,8 +2105,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 340,
+        "x": 880,
+        "y": 260,
         "wires": []
     },
     {
@@ -2127,8 +2127,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 590,
-        "y": 340,
+        "x": 530,
+        "y": 260,
         "wires": [
             [
                 "61b84aa178332fca"
@@ -2144,8 +2144,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Delete service",
         "info": "",
-        "x": 170,
-        "y": 620,
+        "x": 150,
+        "y": 420,
         "wires": []
     },
     {
@@ -2190,8 +2190,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 660,
+        "x": 180,
+        "y": 460,
         "wires": [
             [
                 "f5251f619e6f3e0d"
@@ -2227,8 +2227,8 @@
                 "valueValue": "fiware_servicepath"
             }
         ],
-        "x": 410,
-        "y": 660,
+        "x": 370,
+        "y": 460,
         "wires": [
             [
                 "2091039f17f2fcc4"
@@ -2243,8 +2243,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 700,
+        "x": 690,
+        "y": 500,
         "wires": [
             [
                 "b79f69b92cd07dcb"
@@ -2264,8 +2264,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 660,
+        "x": 880,
+        "y": 460,
         "wires": []
     },
     {
@@ -2286,8 +2286,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 590,
-        "y": 660,
+        "x": 530,
+        "y": 460,
         "wires": [
             [
                 "b79f69b92cd07dcb"
@@ -2303,8 +2303,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Devices",
         "info": "",
-        "x": 110,
-        "y": 780,
+        "x": 90,
+        "y": 520,
         "wires": []
     },
     {
@@ -2313,8 +2313,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Get devices",
         "info": "",
-        "x": 170,
-        "y": 820,
+        "x": 150,
+        "y": 560,
         "wires": []
     },
     {
@@ -2349,8 +2349,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 860,
+        "x": 180,
+        "y": 600,
         "wires": [
             [
                 "b8741209fb59e72f"
@@ -2386,8 +2386,8 @@
                 "valueValue": "fiware_servicepath"
             }
         ],
-        "x": 410,
-        "y": 860,
+        "x": 370,
+        "y": 600,
         "wires": [
             [
                 "16f5721e7bbd7477"
@@ -2402,8 +2402,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 860,
+        "x": 530,
+        "y": 600,
         "wires": [
             [
                 "b96cc9d6823ff655"
@@ -2423,8 +2423,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 860,
+        "x": 690,
+        "y": 600,
         "wires": []
     },
     {
@@ -2433,8 +2433,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Create devices",
         "info": "",
-        "x": 180,
-        "y": 940,
+        "x": 160,
+        "y": 640,
         "wires": []
     },
     {
@@ -2474,8 +2474,8 @@
         "topic": "",
         "payload": "{\"devices\":[{\"device_id\":\"lamp001\",\"entity_name\":\"urn:ngsi-ld:Lamp:001\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"object_id\":\"o\",\"name\":\"on\",\"type\":\"Number\"}]},{\"device_id\":\"lamp002\",\"entity_name\":\"urn:ngsi-ld:Lamp:002\",\"entity_type\":\"Thing\",\"transport\":\"HTTPS\",\"attributes\":[{\"name\":\"on\",\"type\":\"Number\"}]}]}",
         "payloadType": "json",
-        "x": 200,
-        "y": 980,
+        "x": 180,
+        "y": 680,
         "wires": [
             [
                 "910e41bf82b438a0"
@@ -2517,8 +2517,8 @@
                 "valueValue": "application/json"
             }
         ],
-        "x": 410,
-        "y": 980,
+        "x": 370,
+        "y": 680,
         "wires": [
             [
                 "5a924d66d96828e6"
@@ -2533,8 +2533,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 1020,
+        "x": 690,
+        "y": 720,
         "wires": [
             [
                 "57ca771fa2d33763"
@@ -2554,8 +2554,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 980,
+        "x": 880,
+        "y": 680,
         "wires": []
     },
     {
@@ -2576,8 +2576,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 590,
-        "y": 980,
+        "x": 530,
+        "y": 680,
         "wires": [
             [
                 "57ca771fa2d33763"
@@ -2593,8 +2593,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Delete devices",
         "info": "",
-        "x": 180,
-        "y": 1100,
+        "x": 160,
+        "y": 720,
         "wires": []
     },
     {
@@ -2634,8 +2634,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 1180,
+        "x": 220,
+        "y": 800,
         "wires": [
             [
                 "ae02c784ab5505f5"
@@ -2672,7 +2672,7 @@
             }
         ],
         "x": 410,
-        "y": 1200,
+        "y": 800,
         "wires": [
             [
                 "9fccb76d487e1355"
@@ -2687,8 +2687,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 1240,
+        "x": 730,
+        "y": 860,
         "wires": [
             [
                 "307ab2c17874330c"
@@ -2708,8 +2708,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 1200,
+        "x": 910,
+        "y": 820,
         "wires": []
     },
     {
@@ -2730,8 +2730,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 590,
-        "y": 1200,
+        "x": 570,
+        "y": 820,
         "wires": [
             [
                 "307ab2c17874330c"
@@ -2747,8 +2747,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Delete device: lamp001",
         "info": "",
-        "x": 200,
-        "y": 1140,
+        "x": 220,
+        "y": 760,
         "wires": []
     },
     {
@@ -2788,8 +2788,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 200,
-        "y": 1220,
+        "x": 220,
+        "y": 880,
         "wires": [
             [
                 "ae02c784ab5505f5"
@@ -2802,8 +2802,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Delete device: lamp002",
         "info": "",
-        "x": 200,
-        "y": 1260,
+        "x": 220,
+        "y": 840,
         "wires": []
     },
     {
@@ -2812,8 +2812,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Update devices",
         "info": "",
-        "x": 180,
-        "y": 1340,
+        "x": 160,
+        "y": 920,
         "wires": []
     },
     {
@@ -2863,8 +2863,8 @@
         "topic": "",
         "payload": "{\"o\":0}",
         "payloadType": "json",
-        "x": 200,
-        "y": 1420,
+        "x": 220,
+        "y": 1000,
         "wires": [
             [
                 "a979b20a7b5672ec"
@@ -2907,7 +2907,7 @@
             }
         ],
         "x": 410,
-        "y": 1440,
+        "y": 1000,
         "wires": [
             [
                 "bcd885fa6993b402"
@@ -2922,8 +2922,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 1480,
+        "x": 730,
+        "y": 1040,
         "wires": [
             [
                 "20b49813fd8b3f91"
@@ -2943,8 +2943,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 1440,
+        "x": 920,
+        "y": 1000,
         "wires": []
     },
     {
@@ -2965,8 +2965,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 590,
-        "y": 1440,
+        "x": 570,
+        "y": 1000,
         "wires": [
             [
                 "20b49813fd8b3f91"
@@ -2982,8 +2982,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Update device lamp001: set on to 0",
         "info": "",
-        "x": 240,
-        "y": 1380,
+        "x": 260,
+        "y": 960,
         "wires": []
     },
     {
@@ -3038,8 +3038,8 @@
         "topic": "",
         "payload": "{\"o\":1}",
         "payloadType": "json",
-        "x": 200,
-        "y": 1460,
+        "x": 220,
+        "y": 1080,
         "wires": [
             [
                 "a979b20a7b5672ec"
@@ -3052,8 +3052,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Update device lamp001: set on to 1",
         "info": "",
-        "x": 240,
-        "y": 1500,
+        "x": 260,
+        "y": 1040,
         "wires": []
     },
     {
@@ -3103,8 +3103,8 @@
         "topic": "",
         "payload": "{\"on\":0}",
         "payloadType": "json",
-        "x": 200,
-        "y": 1620,
+        "x": 220,
+        "y": 1160,
         "wires": [
             [
                 "32dbbe4b64bcb3df"
@@ -3147,7 +3147,7 @@
             }
         ],
         "x": 410,
-        "y": 1640,
+        "y": 1160,
         "wires": [
             [
                 "a5967ce22ebdec24"
@@ -3162,8 +3162,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 1680,
+        "x": 730,
+        "y": 1200,
         "wires": [
             [
                 "165ee383cfc8dc52"
@@ -3183,8 +3183,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 1640,
+        "x": 920,
+        "y": 1160,
         "wires": []
     },
     {
@@ -3205,8 +3205,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 590,
-        "y": 1640,
+        "x": 570,
+        "y": 1160,
         "wires": [
             [
                 "165ee383cfc8dc52"
@@ -3222,8 +3222,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Update device lamp002: set on to 0",
         "info": "",
-        "x": 240,
-        "y": 1580,
+        "x": 260,
+        "y": 1120,
         "wires": []
     },
     {
@@ -3273,8 +3273,8 @@
         "topic": "",
         "payload": "{\"on\":1}",
         "payloadType": "json",
-        "x": 200,
-        "y": 1660,
+        "x": 220,
+        "y": 1240,
         "wires": [
             [
                 "32dbbe4b64bcb3df"
@@ -3287,8 +3287,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Update device lamp002: set on to 1",
         "info": "",
-        "x": 240,
-        "y": 1700,
+        "x": 260,
+        "y": 1200,
         "wires": []
     },
     {
@@ -3297,8 +3297,8 @@
         "z": "92d8fd98132b13ea",
         "name": "Inject permanent key to service",
         "info": "",
-        "x": 230,
-        "y": 460,
+        "x": 210,
+        "y": 320,
         "wires": []
     },
     {
@@ -3346,10 +3346,10 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\t    \"cbroker\": \"https://10.0.2.15:1026\",\t    \"trust\": $globalContext(\"oauth2-token\")\t}",
+        "payload": "{\t    \"cbroker\": \"https://192.168.42.20:1026\",\t    \"trust\": $globalContext(\"oauth2-token\")\t}",
         "payloadType": "jsonata",
-        "x": 200,
-        "y": 500,
+        "x": 180,
+        "y": 360,
         "wires": [
             [
                 "7fdc4439958bdb13"
@@ -3391,8 +3391,8 @@
                 "valueValue": "application/json"
             }
         ],
-        "x": 410,
-        "y": 500,
+        "x": 370,
+        "y": 360,
         "wires": [
             [
                 "3af0ac09d8e2fc51"
@@ -3407,8 +3407,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 540,
+        "x": 690,
+        "y": 400,
         "wires": [
             [
                 "1f0ea1c816ef4e66"
@@ -3428,8 +3428,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
-        "y": 500,
+        "x": 930,
+        "y": 360,
         "wires": []
     },
     {
@@ -3450,8 +3450,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 590,
-        "y": 500,
+        "x": 530,
+        "y": 360,
         "wires": [
             [
                 "1f0ea1c816ef4e66"
