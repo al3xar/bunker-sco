@@ -663,7 +663,7 @@
         "z": "e9891387af72915b",
         "name": "ACTUADORES",
         "info": "",
-        "x": 500,
+        "x": 140,
         "y": 560,
         "wires": []
     },
@@ -918,7 +918,7 @@
         "z": "e9891387af72915b",
         "name": "SENSORES",
         "info": "",
-        "x": 530,
+        "x": 90,
         "y": 1460,
         "wires": []
     },
@@ -2412,7 +2412,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 750,
+        "x": 270,
         "y": 1460,
         "wires": [
             [
@@ -2467,7 +2467,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 980,
+        "x": 500,
         "y": 1460,
         "wires": [
             []
@@ -3869,6 +3869,46 @@
                 "72e6d0376acaabab"
             ]
         ]
+    },
+    {
+        "id": "f8080295aa7acb93",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "EL AGENTE IOT SE SUSCRIBE A LOS DATOS DE LOS ACTUADORES QUE ESTÁN EN ORION",
+        "info": "",
+        "x": 880,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "52eb97e84b95113f",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "REENVIA EL DATO POR MQTT AL DISPOSITIVO",
+        "info": "",
+        "x": 1710,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "02339720cf602115",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "SIMULACIÓN DE COMPORTAMIENTO DE LOS DISPOSITIVOS IOT",
+        "info": "",
+        "x": 270,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "2af49057da98ba77",
+        "type": "comment",
+        "z": "e9891387af72915b",
+        "name": "SE ENVIA POR MQTT AL AGENTE IOT Y ESTE REENVIA A ORION",
+        "info": "",
+        "x": 1370,
+        "y": 1440,
+        "wires": []
     },
     {
         "id": "99aebcd78c1fc320",
@@ -8389,8 +8429,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 450,
-        "y": 100,
+        "x": 150,
+        "y": 140,
         "wires": [
             [
                 "d1b32033fb4e25ea"
@@ -8437,8 +8477,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 720,
-        "y": 100,
+        "x": 420,
+        "y": 140,
         "wires": [
             []
         ]
@@ -8594,7 +8634,7 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 1260,
+        "x": 1360,
         "y": 500,
         "wires": [
             [
@@ -8683,7 +8723,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1440,
+        "x": 1540,
         "y": 500,
         "wires": [
             [
@@ -8745,7 +8785,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1620,
+        "x": 1720,
         "y": 500,
         "wires": [
             [
@@ -8788,7 +8828,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 1810,
+        "x": 1910,
         "y": 500,
         "wires": [
             [
@@ -8804,7 +8844,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 2130,
+        "x": 2230,
         "y": 520,
         "wires": [
             [
@@ -8825,7 +8865,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2320,
+        "x": 2420,
         "y": 500,
         "wires": []
     },
@@ -8847,7 +8887,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1990,
+        "x": 2090,
         "y": 500,
         "wires": [
             [
@@ -8884,7 +8924,7 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 1250,
+        "x": 1350,
         "y": 620,
         "wires": [
             [
@@ -8973,7 +9013,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1440,
+        "x": 1540,
         "y": 620,
         "wires": [
             [
@@ -9035,7 +9075,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1620,
+        "x": 1720,
         "y": 620,
         "wires": [
             [
@@ -9078,7 +9118,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 1810,
+        "x": 1910,
         "y": 620,
         "wires": [
             [
@@ -9094,7 +9134,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 2130,
+        "x": 2230,
         "y": 640,
         "wires": [
             [
@@ -9115,7 +9155,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2320,
+        "x": 2420,
         "y": 620,
         "wires": []
     },
@@ -9137,7 +9177,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1990,
+        "x": 2090,
         "y": 620,
         "wires": [
             [
@@ -9174,7 +9214,7 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 1260,
+        "x": 1360,
         "y": 740,
         "wires": [
             [
@@ -9247,7 +9287,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1440,
+        "x": 1540,
         "y": 740,
         "wires": [
             [
@@ -9309,7 +9349,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1620,
+        "x": 1720,
         "y": 740,
         "wires": [
             [
@@ -9352,7 +9392,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 1810,
+        "x": 1910,
         "y": 740,
         "wires": [
             [
@@ -9368,7 +9408,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 2130,
+        "x": 2230,
         "y": 760,
         "wires": [
             [
@@ -9389,7 +9429,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2320,
+        "x": 2420,
         "y": 740,
         "wires": []
     },
@@ -9411,7 +9451,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1990,
+        "x": 2090,
         "y": 740,
         "wires": [
             [
@@ -9545,7 +9585,7 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 1280,
+        "x": 1380,
         "y": 860,
         "wires": [
             [
@@ -9618,7 +9658,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1440,
+        "x": 1540,
         "y": 860,
         "wires": [
             [
@@ -9680,7 +9720,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1620,
+        "x": 1720,
         "y": 860,
         "wires": [
             [
@@ -9723,7 +9763,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 1810,
+        "x": 1910,
         "y": 860,
         "wires": [
             [
@@ -9739,7 +9779,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 2130,
+        "x": 2230,
         "y": 880,
         "wires": [
             [
@@ -9760,7 +9800,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2320,
+        "x": 2420,
         "y": 860,
         "wires": []
     },
@@ -9782,7 +9822,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1990,
+        "x": 2090,
         "y": 860,
         "wires": [
             [
@@ -9819,7 +9859,7 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 1280,
+        "x": 1380,
         "y": 980,
         "wires": [
             [
@@ -9892,7 +9932,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1440,
+        "x": 1540,
         "y": 980,
         "wires": [
             [
@@ -9954,7 +9994,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1620,
+        "x": 1720,
         "y": 980,
         "wires": [
             [
@@ -9997,7 +10037,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 1810,
+        "x": 1910,
         "y": 980,
         "wires": [
             [
@@ -10013,7 +10053,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 2130,
+        "x": 2230,
         "y": 1000,
         "wires": [
             [
@@ -10034,7 +10074,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2320,
+        "x": 2420,
         "y": 980,
         "wires": []
     },
@@ -10056,7 +10096,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1990,
+        "x": 2090,
         "y": 980,
         "wires": [
             [
@@ -10093,7 +10133,7 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 1290,
+        "x": 1390,
         "y": 1100,
         "wires": [
             [
@@ -10182,7 +10222,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1490,
+        "x": 1590,
         "y": 1100,
         "wires": [
             [
@@ -10244,7 +10284,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1670,
+        "x": 1770,
         "y": 1100,
         "wires": [
             [
@@ -10287,7 +10327,7 @@
                 "valueValue": "oauth2-token"
             }
         ],
-        "x": 1860,
+        "x": 1960,
         "y": 1100,
         "wires": [
             [
@@ -10303,7 +10343,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 2180,
+        "x": 2280,
         "y": 1120,
         "wires": [
             [
@@ -10324,7 +10364,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2370,
+        "x": 2470,
         "y": 1100,
         "wires": []
     },
@@ -10346,7 +10386,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 2040,
+        "x": 2140,
         "y": 1100,
         "wires": [
             [
@@ -10872,8 +10912,7 @@
         "y": 1580,
         "wires": [
             [
-                "9f1e79a2c5f11866",
-                "98aafc84f0038bf1"
+                "9f1e79a2c5f11866"
             ]
         ]
     },
@@ -11370,35 +11409,23 @@
         ]
     },
     {
-        "id": "98aafc84f0038bf1",
-        "type": "debug",
+        "id": "0cdd68c925a02827",
+        "type": "comment",
         "z": "66697df425b4ad85",
-        "name": "debug 16",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1170,
-        "y": 1520,
+        "name": "SUSCRIPCIÓN DE LOS DATOS DE ORION PARA MONITORIZAR LOS DISPOSITIVOS DESDE LA APP",
+        "info": "",
+        "x": 900,
+        "y": 140,
         "wires": []
     },
     {
-        "id": "26cbd89119f62c67",
-        "type": "debug",
+        "id": "7b2db17909ae7680",
+        "type": "comment",
         "z": "66697df425b4ad85",
-        "name": "debug 17",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1170,
-        "y": 1520,
+        "name": "MODIFICACIÓN MANUAL DE LOS VALORES DE LOS ACTUADORES",
+        "info": "",
+        "x": 1550,
+        "y": 400,
         "wires": []
     }
 ]
